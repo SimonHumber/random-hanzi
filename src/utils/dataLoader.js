@@ -1,10 +1,26 @@
-// Data loader utilities
+// Data loader utilities with in-memory caching
+
+// Cache to store loaded data
+const dataCache = {
+  hsk: {},
+  tocfl: {},
+  kanji: {},
+  sentences: null
+}
 
 export const loadHSKData = async (level) => {
+  // Return cached data if available
+  if (dataCache.hsk[level]) {
+    return dataCache.hsk[level]
+  }
+
   try {
     const response = await fetch(`/data/hsk_level${level}.json`)
     if (!response.ok) throw new Error(`Failed to load HSK level ${level}`)
-    return await response.json()
+    const data = await response.json()
+    // Cache the data
+    dataCache.hsk[level] = data
+    return data
   } catch (error) {
     console.error(`Error loading HSK level ${level}:`, error)
     return []
@@ -12,10 +28,18 @@ export const loadHSKData = async (level) => {
 }
 
 export const loadTOCFLData = async (level) => {
+  // Return cached data if available
+  if (dataCache.tocfl[level]) {
+    return dataCache.tocfl[level]
+  }
+
   try {
     const response = await fetch(`/data/tocfl_level${level}.json`)
     if (!response.ok) throw new Error(`Failed to load TOCFL level ${level}`)
-    return await response.json()
+    const data = await response.json()
+    // Cache the data
+    dataCache.tocfl[level] = data
+    return data
   } catch (error) {
     console.error(`Error loading TOCFL level ${level}:`, error)
     return []
@@ -23,10 +47,18 @@ export const loadTOCFLData = async (level) => {
 }
 
 export const loadKanjiData = async (grade) => {
+  // Return cached data if available
+  if (dataCache.kanji[grade]) {
+    return dataCache.kanji[grade]
+  }
+
   try {
     const response = await fetch(`/data/kanji_grade${grade}.json`)
     if (!response.ok) throw new Error(`Failed to load Kanji grade ${grade}`)
-    return await response.json()
+    const data = await response.json()
+    // Cache the data
+    dataCache.kanji[grade] = data
+    return data
   } catch (error) {
     console.error(`Error loading Kanji grade ${grade}:`, error)
     return []
@@ -34,10 +66,18 @@ export const loadKanjiData = async (grade) => {
 }
 
 export const loadSentenceData = async () => {
+  // Return cached data if available
+  if (dataCache.sentences !== null) {
+    return dataCache.sentences
+  }
+
   try {
     const response = await fetch('/data/sentances.json')
     if (!response.ok) throw new Error('Failed to load sentences')
-    return await response.json()
+    const data = await response.json()
+    // Cache the data
+    dataCache.sentences = data
+    return data
   } catch (error) {
     console.error('Error loading sentences:', error)
     return []
