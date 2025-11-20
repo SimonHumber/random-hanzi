@@ -1,5 +1,9 @@
 # Random Hanzi
 
+## Deployment
+
+This repository is automatically synced and deployed to [Vercel](https://vercel.com). Any push to the main branch will trigger an automatic deployment.
+
 ## Installation
 
 1. Clone the repository or navigate to the project directory

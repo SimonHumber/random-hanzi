@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { loadHSKData, loadTOCFLData, loadKanjiData, loadSentenceData } from '../utils/dataLoader'
-import { isItemEnabled, toggleItem } from '../utils/storage'
+import { isItemEnabled, toggleItem, getDisabledIds } from '../utils/storage'
 
 // Available levels for each category
 const AVAILABLE_LEVELS = {
@@ -82,6 +82,8 @@ function RandomGenerator() {
   const [currentItem, setCurrentItem] = useState(initialItem)
   const [loading, setLoading] = useState(false)
   const [toggleKey, setToggleKey] = useState(0) // Force re-render when item is toggled
+  const [enabledCount, setEnabledCount] = useState(0)
+  const [disabledCount, setDisabledCount] = useState(0)
   const isInitialMount = useRef(true)
   const previousCategory = useRef(category)
   const previousLevels = useRef(JSON.stringify(selectedLevels))
@@ -220,6 +222,107 @@ function RandomGenerator() {
     previousLevels.current = JSON.stringify(selectedLevels)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // Update counts when category, levels, character filter, or toggle changes
+  useEffect(() => {
+    const updateCounts = async () => {
+      try {
+        let data = []
+        let disabledIdsSet = new Set()
+
+        switch (category) {
+          case 'hsk':
+            const hskDataPromises = selectedLevels.map((lvl) => loadHSKData(lvl))
+            const hskDataArrays = await Promise.all(hskDataPromises)
+            data = hskDataArrays.flat()
+            disabledIdsSet = new Set(getDisabledIds('HSK'))
+            // Filter by character count
+            if (characterFilter === 'single') {
+              data = data.filter((item) => item.characterCount === 1)
+            } else if (characterFilter === 'multi') {
+              data = data.filter((item) => item.characterCount > 1)
+            }
+            break
+          case 'tocfl':
+            const tocflDataPromises = selectedLevels.map((lvl) => loadTOCFLData(lvl))
+            const tocflDataArrays = await Promise.all(tocflDataPromises)
+            data = tocflDataArrays.flat()
+            disabledIdsSet = new Set(getDisabledIds('TOCFL'))
+            // Filter by character count
+            if (characterFilter === 'single') {
+              data = data.filter((item) => item.characterCount === 1)
+            } else if (characterFilter === 'multi') {
+              data = data.filter((item) => item.characterCount > 1)
+            }
+            break
+          case 'kanji':
+            const kanjiDataPromises = selectedLevels.map((lvl) => loadKanjiData(lvl))
+            const kanjiDataArrays = await Promise.all(kanjiDataPromises)
+            data = kanjiDataArrays.flat()
+            disabledIdsSet = new Set(getDisabledIds('KANJI'))
+            // Kanji are always single character, but we can still apply filter for consistency
+            if (characterFilter === 'multi') {
+              data = [] // No multi-character kanji
+            }
+            break
+          case 'sentence':
+            data = await loadSentenceData()
+            disabledIdsSet = new Set(getDisabledIds('SENTENCES'))
+            // Filter by character count in sentence
+            if (characterFilter === 'single') {
+              data = data.filter((item) => {
+                const charCount = item.simplified ? item.simplified.replace(/\s/g, '').length : 0
+                return charCount === 1
+              })
+            } else if (characterFilter === 'multi') {
+              data = data.filter((item) => {
+                const charCount = item.simplified ? item.simplified.replace(/\s/g, '').length : 0
+                return charCount > 1
+              })
+            }
+            break
+          default:
+            break
+        }
+
+        let enabled = 0
+        let disabled = 0
+
+        if (category === 'sentence') {
+          data.forEach((item, index) => {
+            if (disabledIdsSet.has(index)) {
+              disabled++
+            } else {
+              enabled++
+            }
+          })
+        } else if (category === 'kanji') {
+          data.forEach((item) => {
+            if (disabledIdsSet.has(item.kanji)) {
+              disabled++
+            } else {
+              enabled++
+            }
+          })
+        } else {
+          data.forEach((item) => {
+            if (disabledIdsSet.has(item.id)) {
+              disabled++
+            } else {
+              enabled++
+            }
+          })
+        }
+
+        setEnabledCount(enabled)
+        setDisabledCount(disabled)
+      } catch (error) {
+        console.error('Error updating counts:', error)
+      }
+    }
+
+    updateCounts()
+  }, [category, selectedLevels, characterFilter, toggleKey])
 
   // Generate new random when category or levels change (but not on initial mount or page navigation)
   useEffect(() => {
@@ -407,6 +510,12 @@ function RandomGenerator() {
               </div>
             </div>
           )}
+
+          <div className="mb-4 text-xs text-gray-500 text-center">
+            <span className="text-green-600">{enabledCount} enabled</span>
+            {' • '}
+            <span className="text-red-600">{disabledCount} disabled</span>
+          </div>
 
           <button
             onClick={(e) => {
@@ -657,11 +766,11 @@ function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
           <button
             onClick={onToggle}
             className={`w-full px-4 py-3 rounded-md text-base font-medium transition-colors ${enabled
-              ? 'bg-green-500 text-white hover:bg-green-600'
-              : 'bg-orange-500 text-white hover:bg-orange-600'
+              ? 'bg-red-500 text-white hover:bg-red-600'
+              : 'bg-green-500 text-white hover:bg-green-600'
               }`}
           >
-            {enabled ? 'Enabled' : 'Disabled'}
+            {enabled ? 'Disable' : 'Enable'}
           </button>
         </div>
       </div>
@@ -719,11 +828,11 @@ function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
           <button
             onClick={onToggle}
             className={`w-full px-4 py-3 rounded-md text-base font-medium transition-colors ${enabled
-              ? 'bg-green-500 text-white hover:bg-green-600'
-              : 'bg-orange-500 text-white hover:bg-orange-600'
+              ? 'bg-red-500 text-white hover:bg-red-600'
+              : 'bg-green-500 text-white hover:bg-green-600'
               }`}
           >
-            {enabled ? 'Enabled' : 'Disabled'}
+            {enabled ? 'Disable' : 'Enable'}
           </button>
         </div>
       </div>
@@ -788,11 +897,11 @@ function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
           <button
             onClick={onToggle}
             className={`w-full px-4 py-3 rounded-md text-base font-medium transition-colors ${enabled
-              ? 'bg-green-500 text-white hover:bg-green-600'
-              : 'bg-orange-500 text-white hover:bg-orange-600'
+              ? 'bg-red-500 text-white hover:bg-red-600'
+              : 'bg-green-500 text-white hover:bg-green-600'
               }`}
           >
-            {enabled ? 'Enabled' : 'Disabled'}
+            {enabled ? 'Disable' : 'Enable'}
           </button>
         </div>
       </div>

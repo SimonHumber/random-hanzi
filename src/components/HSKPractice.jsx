@@ -118,11 +118,10 @@ function HSKPractice() {
                 <button
                   key={lvl}
                   onClick={() => toggleLevel(lvl)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedLevels.includes(lvl)
-                      ? 'text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedLevels.includes(lvl)
+                    ? 'text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
                   style={selectedLevels.includes(lvl) ? { backgroundColor: '#282c34' } : {}}
                 >
                   {lvl}
@@ -140,11 +139,10 @@ function HSKPractice() {
                 <button
                   key={filter}
                   onClick={() => setCharacterFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    characterFilter === filter
-                      ? 'text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${characterFilter === filter
+                    ? 'text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
                   style={characterFilter === filter ? { backgroundColor: '#282c34' } : {}}
                 >
                   {filter === 'all' ? 'All' : filter === 'single' ? 'Single' : 'Multiple'}
@@ -162,11 +160,10 @@ function HSKPractice() {
                 <button
                   key={filter}
                   onClick={() => setStatusFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${
-                    statusFilter === filter
-                      ? 'text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${statusFilter === filter
+                    ? 'text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
                   style={statusFilter === filter ? { backgroundColor: '#282c34' } : {}}
                 >
                   {filter}
@@ -211,9 +208,8 @@ function HSKPractice() {
 function VocabularyCard({ item, enabled, onToggle }) {
   return (
     <div
-      className={`bg-white rounded-lg shadow-md p-6 border-2 ${
-        enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
-      }`}
+      className={`bg-white rounded-lg shadow-md p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
+        }`}
     >
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
@@ -228,13 +224,12 @@ function VocabularyCard({ item, enabled, onToggle }) {
         </div>
         <button
           onClick={onToggle}
-          className={`px-3 py-1 rounded text-sm font-medium ${
-            enabled
-              ? 'bg-green-100 text-green-800 hover:bg-green-200'
-              : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-          }`}
+          className={`px-3 py-1 rounded text-sm font-medium ${enabled
+            ? 'bg-red-100 text-red-800 hover:bg-red-200'
+            : 'bg-green-100 text-green-800 hover:bg-green-200'
+            }`}
         >
-          {enabled ? 'Enabled' : 'Disabled'}
+          {enabled ? 'Disable' : 'Enable'}
         </button>
       </div>
 

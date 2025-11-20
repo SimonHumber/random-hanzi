@@ -165,11 +165,11 @@ function SentenceCard({ item, index, enabled, onToggle }) {
           onClick={onToggle}
           className={`px-3 py-1 rounded text-sm font-medium ${
             enabled
-              ? 'bg-green-100 text-green-800 hover:bg-green-200'
-              : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+              ? 'bg-red-100 text-red-800 hover:bg-red-200'
+              : 'bg-green-100 text-green-800 hover:bg-green-200'
           }`}
         >
-          {enabled ? 'Enabled' : 'Disabled'}
+          {enabled ? 'Disable' : 'Enable'}
         </button>
       </div>
 
