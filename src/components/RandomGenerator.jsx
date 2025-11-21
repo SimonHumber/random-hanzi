@@ -74,6 +74,8 @@ function RandomGenerator() {
   const [category, setCategory] = useState(persistedState?.category || 'hsk')
   const [selectedLevels, setSelectedLevels] = useState(persistedState?.selectedLevels || [1]) // Array of selected levels
   const [characterFilter, setCharacterFilter] = useState(persistedState?.characterFilter || 'all') // 'all', 'single', 'multi'
+  const [selectedSentenceHSKLevels, setSelectedSentenceHSKLevels] = useState(persistedState?.selectedSentenceHSKLevels || [1, 2, 3, 4, 5, 6, 7])
+  const [selectedSentenceTOCFLLevels, setSelectedSentenceTOCFLLevels] = useState(persistedState?.selectedSentenceTOCFLLevels || [1, 2, 3, 4, 5])
   // Initialize with saved item if it exists
   const initialItem = loadPersistedItem(
     persistedState?.category || 'hsk',
@@ -87,6 +89,8 @@ function RandomGenerator() {
   const isInitialMount = useRef(true)
   const previousCategory = useRef(category)
   const previousLevels = useRef(JSON.stringify(selectedLevels))
+  const previousSentenceHSKLevels = useRef(JSON.stringify(selectedSentenceHSKLevels))
+  const previousSentenceTOCFLLevels = useRef(JSON.stringify(selectedSentenceTOCFLLevels))
   const isGenerating = useRef(false) // Track if generation is in progress
   const lastClickTime = useRef(0) // Track last click time for debouncing
 
@@ -145,6 +149,28 @@ function RandomGenerator() {
           filteredData = data
             .map((item, index) => ({ ...item, originalIndex: index }))
             .filter((item) => isItemEnabled('SENTENCES', item.originalIndex))
+          // Filter by HSK and TOCFL levels
+          if (selectedSentenceHSKLevels.length > 0 || selectedSentenceTOCFLLevels.length > 0) {
+            filteredData = filteredData.filter((item) => {
+              const hskLevel = item.hsk_level ? parseInt(item.hsk_level) : null
+              const tocflLevel = item.tocfl_level ? parseInt(item.tocfl_level) : null
+
+              const matchesHSK = selectedSentenceHSKLevels.length > 0 && hskLevel !== null && selectedSentenceHSKLevels.includes(hskLevel)
+              const matchesTOCFL = selectedSentenceTOCFLLevels.length > 0 && tocflLevel !== null && selectedSentenceTOCFLLevels.includes(tocflLevel)
+
+              // Show if matches HSK levels OR TOCFL levels (or both)
+              if (selectedSentenceHSKLevels.length > 0 && selectedSentenceTOCFLLevels.length > 0) {
+                return matchesHSK || matchesTOCFL
+              } else if (selectedSentenceHSKLevels.length > 0) {
+                return matchesHSK
+              } else {
+                return matchesTOCFL
+              }
+            })
+          } else {
+            // If both filters are empty, show nothing
+            filteredData = []
+          }
           // Filter by character count in sentence
           if (characterFilter === 'single') {
             filteredData = filteredData.filter((item) => {
@@ -192,16 +218,18 @@ function RandomGenerator() {
       setLoading(false)
       isGenerating.current = false
     }
-  }, [category, selectedLevels, characterFilter])
+  }, [category, selectedLevels, characterFilter, selectedSentenceHSKLevels, selectedSentenceTOCFLLevels])
 
   // Persist state changes to localStorage (filters only, not items)
   useEffect(() => {
     savePersistedState({
       category,
       selectedLevels,
-      characterFilter
+      characterFilter,
+      selectedSentenceHSKLevels,
+      selectedSentenceTOCFLLevels
     })
-  }, [category, selectedLevels, characterFilter])
+  }, [category, selectedLevels, characterFilter, selectedSentenceHSKLevels, selectedSentenceTOCFLLevels])
 
   // Save item when it changes
   useEffect(() => {
@@ -268,6 +296,27 @@ function RandomGenerator() {
           case 'sentence':
             data = await loadSentenceData()
             disabledIdsSet = new Set(getDisabledIds('SENTENCES'))
+            // Filter by HSK and TOCFL levels
+            if (selectedSentenceHSKLevels.length > 0 || selectedSentenceTOCFLLevels.length > 0) {
+              data = data.filter((item) => {
+                const hskLevel = item.hsk_level ? parseInt(item.hsk_level) : null
+                const tocflLevel = item.tocfl_level ? parseInt(item.tocfl_level) : null
+
+                const matchesHSK = selectedSentenceHSKLevels.length > 0 && hskLevel !== null && selectedSentenceHSKLevels.includes(hskLevel)
+                const matchesTOCFL = selectedSentenceTOCFLLevels.length > 0 && tocflLevel !== null && selectedSentenceTOCFLLevels.includes(tocflLevel)
+
+                if (selectedSentenceHSKLevels.length > 0 && selectedSentenceTOCFLLevels.length > 0) {
+                  return matchesHSK || matchesTOCFL
+                } else if (selectedSentenceHSKLevels.length > 0) {
+                  return matchesHSK
+                } else {
+                  return matchesTOCFL
+                }
+              })
+            } else {
+              // If both filters are empty, show nothing
+              data = []
+            }
             // Filter by character count in sentence
             if (characterFilter === 'single') {
               data = data.filter((item) => {
@@ -322,7 +371,7 @@ function RandomGenerator() {
     }
 
     updateCounts()
-  }, [category, selectedLevels, characterFilter, toggleKey])
+  }, [category, selectedLevels, characterFilter, toggleKey, selectedSentenceHSKLevels, selectedSentenceTOCFLLevels])
 
   // Generate new random when category or levels change (but not on initial mount or page navigation)
   useEffect(() => {
@@ -333,15 +382,23 @@ function RandomGenerator() {
     // Check if category or levels actually changed
     const categoryChanged = previousCategory.current !== category
     const levelsChanged = previousLevels.current !== JSON.stringify(selectedLevels)
+    const sentenceHSKLevelsChanged = category === 'sentence' &&
+      previousSentenceHSKLevels.current !== JSON.stringify(selectedSentenceHSKLevels)
+    const sentenceTOCFLLevelsChanged = category === 'sentence' &&
+      previousSentenceTOCFLLevels.current !== JSON.stringify(selectedSentenceTOCFLLevels)
 
-    if (categoryChanged || levelsChanged) {
-      // Always generate new random when switching tests
+    if (categoryChanged || levelsChanged || sentenceHSKLevelsChanged || sentenceTOCFLLevelsChanged) {
+      // Always generate new random when switching tests or changing levels
       generateRandom()
       previousCategory.current = category
       previousLevels.current = JSON.stringify(selectedLevels)
+      if (category === 'sentence') {
+        previousSentenceHSKLevels.current = JSON.stringify(selectedSentenceHSKLevels)
+        previousSentenceTOCFLLevels.current = JSON.stringify(selectedSentenceTOCFLLevels)
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, selectedLevels])
+  }, [category, selectedLevels, selectedSentenceHSKLevels, selectedSentenceTOCFLLevels])
 
 
   return (
@@ -457,6 +514,84 @@ function RandomGenerator() {
                 ))}
               </div>
             </div>
+          )}
+
+          {category === 'sentence' && (
+            <>
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  HSK Level
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {[1, 2, 3, 4, 5, 6, 7].map((lvl) => (
+                    <button
+                      key={lvl}
+                      onClick={() => {
+                        setSelectedSentenceHSKLevels((prev) => {
+                          if (prev.includes(lvl)) {
+                            const newLevels = prev.filter((l) => l !== lvl)
+                            // Allow empty only if TOCFL has at least one selected
+                            if (newLevels.length === 0) {
+                              if (selectedSentenceTOCFLLevels.length > 0) {
+                                return [] // Can be empty if TOCFL has selections
+                              } else {
+                                return [lvl] // Must keep at least one if TOCFL is also empty
+                              }
+                            }
+                            return newLevels
+                          }
+                          return [...prev, lvl].sort()
+                        })
+                      }}
+                      className={`px-3 py-1.5 text-sm rounded-full font-medium transition-colors ${selectedSentenceHSKLevels.includes(lvl)
+                        ? 'text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                      style={selectedSentenceHSKLevels.includes(lvl) ? { backgroundColor: '#282c34' } : {}}
+                    >
+                      {lvl}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  TOCFL Level
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {[1, 2, 3, 4, 5].map((lvl) => (
+                    <button
+                      key={lvl}
+                      onClick={() => {
+                        setSelectedSentenceTOCFLLevels((prev) => {
+                          if (prev.includes(lvl)) {
+                            const newLevels = prev.filter((l) => l !== lvl)
+                            // Allow empty only if HSK has at least one selected
+                            if (newLevels.length === 0) {
+                              if (selectedSentenceHSKLevels.length > 0) {
+                                return [] // Can be empty if HSK has selections
+                              } else {
+                                return [lvl] // Must keep at least one if HSK is also empty
+                              }
+                            }
+                            return newLevels
+                          }
+                          return [...prev, lvl].sort()
+                        })
+                      }}
+                      className={`px-3 py-1.5 text-sm rounded-full font-medium transition-colors ${selectedSentenceTOCFLLevels.includes(lvl)
+                        ? 'text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                      style={selectedSentenceTOCFLLevels.includes(lvl) ? { backgroundColor: '#10b981' } : {}}
+                    >
+                      {lvl}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
           )}
 
           {(category === 'hsk' || category === 'tocfl') && (
