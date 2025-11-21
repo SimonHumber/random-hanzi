@@ -36,11 +36,11 @@ function SentencePractice() {
 
     // Filter by status using cached Set
     if (statusFilter === 'enabled') {
-      filtered = filtered.filter((item, index) => 
+      filtered = filtered.filter((item, index) =>
         !disabledIdsSet.has(index)
       )
     } else if (statusFilter === 'disabled') {
-      filtered = filtered.filter((item, index) => 
+      filtered = filtered.filter((item, index) =>
         disabledIdsSet.has(index)
       )
     }
@@ -50,8 +50,8 @@ function SentencePractice() {
       const term = searchTerm.toLowerCase().trim()
       filtered = filtered.filter((item) => {
         return (
-          item.traditional?.toLowerCase().includes(term) ||
-          item.simplified?.toLowerCase().includes(term) ||
+          item.traditionalChinese?.toLowerCase().includes(term) ||
+          item.simplifiedChinese?.toLowerCase().includes(term) ||
           item.pinyin?.toLowerCase().includes(term) ||
           item.jyutping?.toLowerCase().includes(term) ||
           item.english?.toLowerCase().includes(term) ||
@@ -94,11 +94,10 @@ function SentencePractice() {
                 <button
                   key={filter}
                   onClick={() => setStatusFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${
-                    statusFilter === filter
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${statusFilter === filter
                       ? 'bg-orange-500 text-white'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                    }`}
                 >
                   {filter}
                 </button>
@@ -146,28 +145,26 @@ function SentencePractice() {
 function SentenceCard({ item, index, enabled, onToggle }) {
   return (
     <div
-      className={`bg-white rounded-lg shadow-md p-6 border-2 ${
-        enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
-      }`}
+      className={`bg-white rounded-lg shadow-md p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
+        }`}
     >
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
           <div className="text-2xl font-bold mb-2 text-gray-800">
-            {item.simplified}
+            {item.simplifiedChinese}
           </div>
-          {item.traditional !== item.simplified && (
+          {item.traditionalChinese !== item.simplifiedChinese && (
             <div className="text-xl text-gray-600 mb-2">
-              {item.traditional}
+              {item.traditionalChinese}
             </div>
           )}
         </div>
         <button
           onClick={onToggle}
-          className={`px-3 py-1 rounded text-sm font-medium ${
-            enabled
+          className={`px-3 py-1 rounded text-sm font-medium ${enabled
               ? 'bg-red-100 text-red-800 hover:bg-red-200'
               : 'bg-green-100 text-green-800 hover:bg-green-200'
-          }`}
+            }`}
         >
           {enabled ? 'Disable' : 'Enable'}
         </button>

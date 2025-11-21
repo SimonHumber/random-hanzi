@@ -148,12 +148,12 @@ function RandomGenerator() {
           // Filter by character count in sentence
           if (characterFilter === 'single') {
             filteredData = filteredData.filter((item) => {
-              const charCount = item.simplified ? item.simplified.replace(/\s/g, '').length : 0
+              const charCount = item.simplifiedChinese ? item.simplifiedChinese.replace(/\s/g, '').length : 0
               return charCount === 1
             })
           } else if (characterFilter === 'multi') {
             filteredData = filteredData.filter((item) => {
-              const charCount = item.simplified ? item.simplified.replace(/\s/g, '').length : 0
+              const charCount = item.simplifiedChinese ? item.simplifiedChinese.replace(/\s/g, '').length : 0
               return charCount > 1
             })
           }
@@ -271,12 +271,12 @@ function RandomGenerator() {
             // Filter by character count in sentence
             if (characterFilter === 'single') {
               data = data.filter((item) => {
-                const charCount = item.simplified ? item.simplified.replace(/\s/g, '').length : 0
+                const charCount = item.simplifiedChinese ? item.simplifiedChinese.replace(/\s/g, '').length : 0
                 return charCount === 1
               })
             } else if (characterFilter === 'multi') {
               data = data.filter((item) => {
-                const charCount = item.simplified ? item.simplified.replace(/\s/g, '').length : 0
+                const charCount = item.simplifiedChinese ? item.simplifiedChinese.replace(/\s/g, '').length : 0
                 return charCount > 1
               })
             }
@@ -564,7 +564,7 @@ function RandomGenerator() {
         {currentItem && (
           <div className="bg-white rounded-lg shadow-lg p-8">
             <RandomItemCard
-              key={`${currentItem.category}-${currentItem.id || currentItem.kanji || currentItem.simplified}`}
+              key={`${currentItem.category}-${currentItem.id || currentItem.kanji || currentItem.simplifiedChinese}`}
               item={currentItem}
               toggleKey={toggleKey}
               onToggle={() => {
@@ -844,11 +844,11 @@ function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
       <div className="space-y-4">
         <div className="text-center">
           <div className="text-3xl font-bold mb-4 text-gray-800">
-            {item.traditional || item.simplified}
+            {item.traditionalChinese || item.simplifiedChinese}
           </div>
-          {item.simplified && item.simplified !== item.traditional && (
+          {item.simplifiedChinese && item.simplifiedChinese !== item.traditionalChinese && (
             <div className="text-2xl text-gray-600 mb-4">
-              {item.simplified}
+              {item.simplifiedChinese}
             </div>
           )}
         </div>
