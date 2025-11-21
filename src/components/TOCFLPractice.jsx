@@ -4,7 +4,7 @@ import { loadTOCFLData } from '../utils/dataLoader'
 import { getDisabledIds, toggleItem } from '../utils/storage'
 
 const STORAGE_KEY = 'randomHanzi_tocflPractice_filters'
-const ROW_HEIGHT = 320
+const ROW_HEIGHT = 420
 const LIST_HEIGHT = 600
 
 function TOCFLPractice() {
@@ -289,17 +289,17 @@ function Row({ index, style, items, disabledIdsSet, handleToggle, cardsPerRow })
 function VocabularyCard({ item, enabled, onToggle }) {
   return (
     <div
-      className={`bg-white rounded-lg shadow-md p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
+      className={`bg-white rounded-lg shadow-md p-4 sm:p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
         }`}
-      style={{ minHeight: '380px' }}
+      style={{ boxSizing: 'border-box', overflow: 'auto', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', minHeight: '370px' }}
     >
       <div className="flex justify-between items-start mb-4">
-        <div className="flex-1">
-          <div className="text-3xl font-bold mb-2 text-gray-800">
+        <div className="flex-1 min-w-0">
+          <div className="text-xl sm:text-2xl font-bold mb-2 text-gray-800 break-words">
             {item.traditionalChinese}
           </div>
-          {item.simplifiedChinese !== item.traditionalChinese && (
-            <div className="text-2xl text-gray-600 mb-2">
+          {item.simplifiedChinese && (
+            <div className="text-lg sm:text-xl text-gray-600 mb-2 break-words">
               {item.simplifiedChinese}
             </div>
           )}
@@ -315,26 +315,26 @@ function VocabularyCard({ item, enabled, onToggle }) {
         </button>
       </div>
 
-      <div className="space-y-2 text-sm">
-        <div>
+      <div className="space-y-2 text-xs sm:text-sm flex-1">
+        <div className="break-words">
           <span className="font-semibold text-gray-700">Pinyin:</span>{' '}
           <span className="text-gray-600">{item.pinyin}</span>
         </div>
-        <div>
+        <div className="break-words">
           <span className="font-semibold text-gray-700">Jyutping:</span>{' '}
           <span className="text-gray-600">{item.jyutping}</span>
         </div>
         {item.hanviet && (
-          <div>
+          <div className="break-words">
             <span className="font-semibold text-gray-700">Han Viet:</span>{' '}
             <span className="text-gray-600">{item.hanviet}</span>
           </div>
         )}
-        <div>
+        <div className="break-words">
           <span className="font-semibold text-gray-700">Vietnamese:</span>{' '}
           <span className="text-gray-600">{item.vietnamese}</span>
         </div>
-        <div>
+        <div className="break-words">
           <span className="font-semibold text-gray-700">English:</span>{' '}
           <span className="text-gray-600">{item.english}</span>
         </div>

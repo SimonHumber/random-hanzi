@@ -300,11 +300,11 @@ function VocabularyCard({ item, enabled, onToggle }) {
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1 min-w-0">
           <div className="text-xl sm:text-2xl font-bold mb-2 text-gray-800 break-words">
-            {item.simplifiedChinese}
+            {item.traditionalChinese}
           </div>
-          {item.traditionalChinese && (
+          {item.simplifiedChinese && (
             <div className="text-lg sm:text-xl text-gray-600 mb-2 break-words">
-              {item.traditionalChinese}
+              {item.simplifiedChinese}
             </div>
           )}
         </div>
