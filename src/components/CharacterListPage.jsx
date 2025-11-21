@@ -1,11 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import HSKPractice from './HSKPractice'
 import TOCFLPractice from './TOCFLPractice'
 import KanjiPractice from './KanjiPractice'
 import SentencePractice from './SentencePractice'
 
+const STORAGE_KEY = 'randomHanzi_characterList_activeTab'
+
 function CharacterListPage() {
-  const [activeTab, setActiveTab] = useState('hsk')
+  const [activeTab, setActiveTab] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored || 'hsk'
+    } catch {
+      return 'hsk'
+    }
+  })
+
+  // Persist active tab when it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, activeTab)
+    } catch (error) {
+      console.error('Error saving active tab:', error)
+    }
+  }, [activeTab])
 
   const tabs = [
     { id: 'hsk', label: 'HSK' },

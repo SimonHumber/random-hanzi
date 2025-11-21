@@ -2,15 +2,59 @@ import { useState, useEffect } from 'react'
 import { loadTOCFLData } from '../utils/dataLoader'
 import { getDisabledIds, toggleItem } from '../utils/storage'
 
+const STORAGE_KEY = 'randomHanzi_tocflPractice_filters'
+
 function TOCFLPractice() {
-  const [selectedLevels, setSelectedLevels] = useState([1])
+  const [selectedLevels, setSelectedLevels] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored).selectedLevels : [1]
+    } catch {
+      return [1]
+    }
+  })
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [loading, setLoading] = useState(true)
-  const [characterFilter, setCharacterFilter] = useState('single')
-  const [statusFilter, setStatusFilter] = useState('all') // 'all', 'enabled', 'disabled'
-  const [searchTerm, setSearchTerm] = useState('')
+  const [characterFilter, setCharacterFilter] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored).characterFilter : 'single'
+    } catch {
+      return 'single'
+    }
+  })
+  const [statusFilter, setStatusFilter] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored).statusFilter : 'all'
+    } catch {
+      return 'all'
+    }
+  })
+  const [searchTerm, setSearchTerm] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored).searchTerm : ''
+    } catch {
+      return ''
+    }
+  })
   const [disabledIdsSet, setDisabledIdsSet] = useState(new Set())
+
+  // Persist filters when they change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        selectedLevels,
+        characterFilter,
+        statusFilter,
+        searchTerm
+      }))
+    } catch (error) {
+      console.error('Error saving TOCFL filters:', error)
+    }
+  }, [selectedLevels, characterFilter, statusFilter, searchTerm])
 
   useEffect(() => {
     loadData()
@@ -113,7 +157,7 @@ function TOCFLPractice() {
               Level
             </label>
             <div className="flex gap-2">
-              {[1].map((lvl) => (
+              {[1, 2, 3, 4, 5].map((lvl) => (
                 <button
                   key={lvl}
                   onClick={() => toggleLevel(lvl)}
@@ -243,20 +287,20 @@ function VocabularyCard({ item, enabled, onToggle }) {
           <span className="font-semibold text-gray-700">Jyutping:</span>{' '}
           <span className="text-gray-600">{item.jyutping}</span>
         </div>
-        <div>
-          <span className="font-semibold text-gray-700">English:</span>{' '}
-          <span className="text-gray-600">{item.english}</span>
-        </div>
-        <div>
-          <span className="font-semibold text-gray-700">Vietnamese:</span>{' '}
-          <span className="text-gray-600">{item.vietnamese}</span>
-        </div>
         {item.hanviet && (
           <div>
             <span className="font-semibold text-gray-700">Han Viet:</span>{' '}
             <span className="text-gray-600">{item.hanviet}</span>
           </div>
         )}
+        <div>
+          <span className="font-semibold text-gray-700">Vietnamese:</span>{' '}
+          <span className="text-gray-600">{item.vietnamese}</span>
+        </div>
+        <div>
+          <span className="font-semibold text-gray-700">English:</span>{' '}
+          <span className="text-gray-600">{item.english}</span>
+        </div>
         <div className="pt-2 border-t border-gray-200">
           <span className="text-xs text-gray-500">
             {item.characterCount} character{item.characterCount > 1 ? 's' : ''}

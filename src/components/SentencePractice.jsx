@@ -2,13 +2,41 @@ import { useState, useEffect } from 'react'
 import { loadSentenceData } from '../utils/dataLoader'
 import { getDisabledIds, toggleItem } from '../utils/storage'
 
+const STORAGE_KEY = 'randomHanzi_sentencePractice_filters'
+
 function SentencePractice() {
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [loading, setLoading] = useState(true)
-  const [statusFilter, setStatusFilter] = useState('all') // 'all', 'enabled', 'disabled'
-  const [searchTerm, setSearchTerm] = useState('')
+  const [statusFilter, setStatusFilter] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored).statusFilter : 'all'
+    } catch {
+      return 'all'
+    }
+  })
+  const [searchTerm, setSearchTerm] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored).searchTerm : ''
+    } catch {
+      return ''
+    }
+  })
   const [disabledIdsSet, setDisabledIdsSet] = useState(new Set())
+
+  // Persist filters when they change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        statusFilter,
+        searchTerm
+      }))
+    } catch (error) {
+      console.error('Error saving Sentence filters:', error)
+    }
+  }, [statusFilter, searchTerm])
 
   useEffect(() => {
     loadData()
@@ -95,8 +123,8 @@ function SentencePractice() {
                   key={filter}
                   onClick={() => setStatusFilter(filter)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${statusFilter === filter
-                      ? 'bg-orange-500 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    ? 'bg-orange-500 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                 >
                   {filter}
@@ -151,19 +179,19 @@ function SentenceCard({ item, index, enabled, onToggle }) {
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
           <div className="text-2xl font-bold mb-2 text-gray-800">
-            {item.simplifiedChinese}
+            {item.traditionalChinese}
           </div>
-          {item.traditionalChinese !== item.simplifiedChinese && (
+          {item.simplifiedChinese && item.simplifiedChinese !== item.traditionalChinese && (
             <div className="text-xl text-gray-600 mb-2">
-              {item.traditionalChinese}
+              {item.simplifiedChinese}
             </div>
           )}
         </div>
         <button
           onClick={onToggle}
           className={`px-3 py-1 rounded text-sm font-medium ${enabled
-              ? 'bg-red-100 text-red-800 hover:bg-red-200'
-              : 'bg-green-100 text-green-800 hover:bg-green-200'
+            ? 'bg-red-100 text-red-800 hover:bg-red-200'
+            : 'bg-green-100 text-green-800 hover:bg-green-200'
             }`}
         >
           {enabled ? 'Disable' : 'Enable'}
@@ -179,20 +207,20 @@ function SentenceCard({ item, index, enabled, onToggle }) {
           <span className="font-semibold text-gray-700">Jyutping:</span>{' '}
           <span className="text-gray-600">{item.jyutping}</span>
         </div>
-        <div>
-          <span className="font-semibold text-gray-700">English:</span>{' '}
-          <span className="text-gray-600">{item.english}</span>
-        </div>
-        <div>
-          <span className="font-semibold text-gray-700">Vietnamese:</span>{' '}
-          <span className="text-gray-600">{item.viet}</span>
-        </div>
         {item.hanviet && (
           <div>
             <span className="font-semibold text-gray-700">Han Viet:</span>{' '}
             <span className="text-gray-600">{item.hanviet}</span>
           </div>
         )}
+        <div>
+          <span className="font-semibold text-gray-700">Vietnamese:</span>{' '}
+          <span className="text-gray-600">{item.viet}</span>
+        </div>
+        <div>
+          <span className="font-semibold text-gray-700">English:</span>{' '}
+          <span className="text-gray-600">{item.english}</span>
+        </div>
       </div>
     </div>
   )
