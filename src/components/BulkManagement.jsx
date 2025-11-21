@@ -3,8 +3,8 @@ import { loadHSKData, loadTOCFLData, loadKanjiData, loadSentenceData } from '../
 import { getRandomlyDisabledIds, randomlyDisableItems, reenableRandomlyDisabled, getDisabledIds } from '../utils/storage'
 
 const AVAILABLE_LEVELS = {
-  hsk: [1, 2],
-  tocfl: [1],
+  hsk: [1, 2, 3, 4, 5, 6, 7],
+  tocfl: [1, 2, 3, 4, 5],
   kanji: [1, 2],
   sentence: []
 }

@@ -162,8 +162,8 @@ function HSKPractice() {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Level
             </label>
-            <div className="flex gap-2">
-              {[1, 2].map((lvl) => (
+            <div className="flex gap-2 flex-wrap">
+              {[1, 2, 3, 4, 5, 6, 7].map((lvl) => (
                 <button
                   key={lvl}
                   onClick={() => toggleLevel(lvl)}

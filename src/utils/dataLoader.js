@@ -72,9 +72,12 @@ export const loadSentenceData = async () => {
   }
 
   try {
-    const response = await fetch('/data/sentances.json')
+    console.log('Starting to load sentences.json (16MB, 18k+ items)...')
+    const response = await fetch('/data/sentences.json')
+    console.log('Fetch complete, parsing JSON...')
     if (!response.ok) throw new Error('Failed to load sentences')
     const data = await response.json()
+    console.log('Successfully loaded', data.length, 'sentences')
     // Cache the data
     dataCache.sentences = data
     return data
@@ -85,9 +88,14 @@ export const loadSentenceData = async () => {
 }
 
 export const getAllData = async () => {
-  const [hsk1, hsk2, tocfl1, kanji1, kanji2, sentences] = await Promise.all([
+  const [hsk1, hsk2, hsk3, hsk4, hsk5, hsk6, hsk7, tocfl1, kanji1, kanji2, sentences] = await Promise.all([
     loadHSKData(1),
     loadHSKData(2),
+    loadHSKData(3),
+    loadHSKData(4),
+    loadHSKData(5),
+    loadHSKData(6),
+    loadHSKData(7),
     loadTOCFLData(1),
     loadKanjiData(1),
     loadKanjiData(2),
@@ -95,7 +103,7 @@ export const getAllData = async () => {
   ])
 
   return {
-    hsk: [...hsk1, ...hsk2],
+    hsk: [...hsk1, ...hsk2, ...hsk3, ...hsk4, ...hsk5, ...hsk6, ...hsk7],
     tocfl: tocfl1,
     kanji: [...kanji1, ...kanji2],
     sentences,

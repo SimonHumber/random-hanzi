@@ -4,7 +4,7 @@ import { isItemEnabled, toggleItem, getDisabledIds } from '../utils/storage'
 
 // Available levels for each category
 const AVAILABLE_LEVELS = {
-  hsk: [1, 2],
+  hsk: [1, 2, 3, 4, 5, 6, 7],
   tocfl: [1, 2, 3, 4, 5],
   kanji: [1, 2],
   sentence: []
