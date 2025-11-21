@@ -162,8 +162,8 @@ function TOCFLPractice() {
                   key={lvl}
                   onClick={() => toggleLevel(lvl)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedLevels.includes(lvl)
-                      ? 'bg-green-500 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                 >
                   {lvl}
@@ -182,8 +182,8 @@ function TOCFLPractice() {
                   key={filter}
                   onClick={() => setCharacterFilter(filter)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${characterFilter === filter
-                      ? 'bg-green-500 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                 >
                   {filter === 'all' ? 'All' : filter === 'single' ? 'Single' : 'Multiple'}
@@ -202,8 +202,8 @@ function TOCFLPractice() {
                   key={filter}
                   onClick={() => setStatusFilter(filter)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${statusFilter === filter
-                      ? 'bg-green-500 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                 >
                   {filter}
@@ -265,8 +265,8 @@ function VocabularyCard({ item, enabled, onToggle }) {
         <button
           onClick={onToggle}
           className={`px-3 py-1 rounded text-sm font-medium ${enabled
-              ? 'bg-red-100 text-red-800 hover:bg-red-200'
-              : 'bg-green-100 text-green-800 hover:bg-green-200'
+            ? 'bg-red-100 text-red-800 hover:bg-red-200'
+            : 'bg-green-100 text-green-800 hover:bg-green-200'
             }`}
         >
           {enabled ? 'Disable' : 'Enable'}
