@@ -142,6 +142,22 @@ function TOCFLPractice() {
   }
 
   const containerRef = useRef(null)
+  const [cardsPerRow, setCardsPerRow] = useState(3)
+
+  useEffect(() => {
+    const updateCardsPerRow = () => {
+      // On mobile (< 768px), show 1 card per row. On larger screens, show 3
+      if (window.innerWidth < 768) {
+        setCardsPerRow(1)
+      } else {
+        setCardsPerRow(3)
+      }
+    }
+
+    updateCardsPerRow()
+    window.addEventListener('resize', updateCardsPerRow)
+    return () => window.removeEventListener('resize', updateCardsPerRow)
+  }, [])
 
   if (loading) {
     return (
@@ -240,9 +256,9 @@ function TOCFLPractice() {
         <div ref={containerRef} style={{ width: '100%', height: `${LIST_HEIGHT}px` }}>
           <List
             rowComponent={Row}
-            rowCount={Math.ceil(filteredData.length / 3)}
+            rowCount={Math.ceil(filteredData.length / cardsPerRow)}
             rowHeight={ROW_HEIGHT}
-            rowProps={{ items: filteredData, disabledIdsSet, handleToggle }}
+            rowProps={{ items: filteredData, disabledIdsSet, handleToggle, cardsPerRow }}
           />
         </div>
       )}
@@ -250,13 +266,13 @@ function TOCFLPractice() {
   )
 }
 
-function Row({ index, style, items, disabledIdsSet, handleToggle }) {
-  const startIndex = index * 3
-  const rowItems = items.slice(startIndex, startIndex + 3)
+function Row({ index, style, items, disabledIdsSet, handleToggle, cardsPerRow }) {
+  const startIndex = index * cardsPerRow
+  const rowItems = items.slice(startIndex, startIndex + cardsPerRow)
 
   return (
-    <div style={style} className="px-2">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+    <div style={{ ...style, paddingLeft: '8px', paddingRight: '8px', paddingBottom: '12px', boxSizing: 'border-box', overflow: 'hidden' }}>
+      <div className={`grid gap-4 ${cardsPerRow === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`} style={{ height: 'calc(100% - 12px)' }}>
         {rowItems.map((item) => (
           <VocabularyCard
             key={item.id}
@@ -275,6 +291,7 @@ function VocabularyCard({ item, enabled, onToggle }) {
     <div
       className={`bg-white rounded-lg shadow-md p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
         }`}
+      style={{ minHeight: '380px' }}
     >
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">

@@ -126,6 +126,22 @@ function KanjiPractice() {
   }
 
   const containerRef = useRef(null)
+  const [cardsPerRow, setCardsPerRow] = useState(3)
+
+  useEffect(() => {
+    const updateCardsPerRow = () => {
+      // On mobile (< 768px), show 1 card per row. On larger screens, show 3
+      if (window.innerWidth < 768) {
+        setCardsPerRow(1)
+      } else {
+        setCardsPerRow(3)
+      }
+    }
+
+    updateCardsPerRow()
+    window.addEventListener('resize', updateCardsPerRow)
+    return () => window.removeEventListener('resize', updateCardsPerRow)
+  }, [])
 
   if (loading) {
     return (
@@ -150,11 +166,10 @@ function KanjiPractice() {
                 <button
                   key={grd}
                   onClick={() => toggleGrade(grd)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedGrades.includes(grd)
-                      ? 'bg-purple-500 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedGrades.includes(grd)
+                    ? 'bg-purple-500 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
                 >
                   {grd}
                 </button>
@@ -171,11 +186,10 @@ function KanjiPractice() {
                 <button
                   key={filter}
                   onClick={() => setStatusFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${
-                    statusFilter === filter
-                      ? 'bg-purple-500 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${statusFilter === filter
+                    ? 'bg-purple-500 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
                 >
                   {filter}
                 </button>
@@ -206,9 +220,9 @@ function KanjiPractice() {
         <div ref={containerRef} style={{ width: '100%', height: `${LIST_HEIGHT}px` }}>
           <List
             rowComponent={Row}
-            rowCount={Math.ceil(filteredData.length / 3)}
+            rowCount={Math.ceil(filteredData.length / cardsPerRow)}
             rowHeight={ROW_HEIGHT}
-            rowProps={{ items: filteredData, disabledIdsSet, handleToggle }}
+            rowProps={{ items: filteredData, disabledIdsSet, handleToggle, cardsPerRow }}
           />
         </div>
       )}
@@ -216,13 +230,13 @@ function KanjiPractice() {
   )
 }
 
-function Row({ index, style, items, disabledIdsSet, handleToggle }) {
-  const startIndex = index * 3
-  const rowItems = items.slice(startIndex, startIndex + 3)
+function Row({ index, style, items, disabledIdsSet, handleToggle, cardsPerRow }) {
+  const startIndex = index * cardsPerRow
+  const rowItems = items.slice(startIndex, startIndex + cardsPerRow)
 
   return (
-    <div style={style} className="px-2">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+    <div style={{ ...style, paddingLeft: '8px', paddingRight: '8px', paddingBottom: '12px', boxSizing: 'border-box', overflow: 'hidden' }}>
+      <div className={`grid gap-4 ${cardsPerRow === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`} style={{ height: 'calc(100% - 12px)' }}>
         {rowItems.map((item, idx) => (
           <KanjiCard
             key={`${item.kanji}-${startIndex + idx}`}
@@ -239,19 +253,17 @@ function Row({ index, style, items, disabledIdsSet, handleToggle }) {
 function KanjiCard({ item, enabled, onToggle }) {
   return (
     <div
-      className={`bg-white rounded-lg shadow-md p-6 border-2 ${
-        enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
-      }`}
+      className={`bg-white rounded-lg shadow-md p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
+        }`}
     >
       <div className="flex justify-between items-start mb-4">
         <div className="text-4xl font-bold text-gray-800">{item.kanji}</div>
         <button
           onClick={onToggle}
-          className={`px-3 py-1 rounded text-sm font-medium ${
-            enabled
-              ? 'bg-red-100 text-red-800 hover:bg-red-200'
-              : 'bg-green-100 text-green-800 hover:bg-green-200'
-          }`}
+          className={`px-3 py-1 rounded text-sm font-medium ${enabled
+            ? 'bg-red-100 text-red-800 hover:bg-red-200'
+            : 'bg-green-100 text-green-800 hover:bg-green-200'
+            }`}
         >
           {enabled ? 'Disable' : 'Enable'}
         </button>

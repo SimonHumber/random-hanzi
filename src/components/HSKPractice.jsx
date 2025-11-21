@@ -4,7 +4,7 @@ import { loadHSKData } from '../utils/dataLoader'
 import { getDisabledIds, toggleItem } from '../utils/storage'
 
 const STORAGE_KEY = 'randomHanzi_hskPractice_filters'
-const ROW_HEIGHT = 320
+const ROW_HEIGHT = 420
 const LIST_HEIGHT = 600
 
 function HSKPractice() {
@@ -143,6 +143,22 @@ function HSKPractice() {
   }
 
   const containerRef = useRef(null)
+  const [cardsPerRow, setCardsPerRow] = useState(3)
+
+  useEffect(() => {
+    const updateCardsPerRow = () => {
+      // On mobile (< 768px), show 1 card per row. On larger screens, show 3
+      if (window.innerWidth < 768) {
+        setCardsPerRow(1)
+      } else {
+        setCardsPerRow(3)
+      }
+    }
+
+    updateCardsPerRow()
+    window.addEventListener('resize', updateCardsPerRow)
+    return () => window.removeEventListener('resize', updateCardsPerRow)
+  }, [])
 
   if (loading) {
     return (
@@ -244,9 +260,9 @@ function HSKPractice() {
         <div ref={containerRef} style={{ width: '100%', height: `${LIST_HEIGHT}px` }}>
           <List
             rowComponent={Row}
-            rowCount={Math.ceil(filteredData.length / 3)}
+            rowCount={Math.ceil(filteredData.length / cardsPerRow)}
             rowHeight={ROW_HEIGHT}
-            rowProps={{ items: filteredData, disabledIdsSet, handleToggle }}
+            rowProps={{ items: filteredData, allData: data, disabledIdsSet, handleToggle, cardsPerRow }}
           />
         </div>
       )}
@@ -254,13 +270,13 @@ function HSKPractice() {
   )
 }
 
-function Row({ index, style, items, disabledIdsSet, handleToggle }) {
-  const startIndex = index * 3
-  const rowItems = items.slice(startIndex, startIndex + 3)
+function Row({ index, style, items, allData, disabledIdsSet, handleToggle, cardsPerRow }) {
+  const startIndex = index * cardsPerRow
+  const rowItems = items.slice(startIndex, startIndex + cardsPerRow)
 
   return (
-    <div style={style} className="px-2">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+    <div style={{ ...style, paddingLeft: '8px', paddingRight: '8px', paddingBottom: '12px', boxSizing: 'border-box', overflow: 'hidden' }}>
+      <div className={`grid gap-4 ${cardsPerRow === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`} style={{ height: 'calc(100% - 12px)' }}>
         {rowItems.map((item) => (
           <VocabularyCard
             key={item.id}
@@ -277,17 +293,18 @@ function Row({ index, style, items, disabledIdsSet, handleToggle }) {
 function VocabularyCard({ item, enabled, onToggle }) {
   return (
     <div
-      className={`bg-white rounded-lg shadow-md p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
+      className={`bg-white rounded-lg shadow-md p-4 sm:p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
         }`}
+      style={{ boxSizing: 'border-box', overflow: 'auto', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', minHeight: '370px' }}
     >
       <div className="flex justify-between items-start mb-4">
-        <div className="flex-1">
-          <div className="text-3xl font-bold mb-2 text-gray-800">
-            {item.traditionalChinese}
+        <div className="flex-1 min-w-0">
+          <div className="text-xl sm:text-2xl font-bold mb-2 text-gray-800 break-words">
+            {item.simplifiedChinese}
           </div>
-          {item.simplifiedChinese && item.simplifiedChinese !== item.traditionalChinese && (
-            <div className="text-2xl text-gray-600 mb-2">
-              {item.simplifiedChinese}
+          {item.traditionalChinese && (
+            <div className="text-lg sm:text-xl text-gray-600 mb-2 break-words">
+              {item.traditionalChinese}
             </div>
           )}
         </div>
@@ -302,26 +319,26 @@ function VocabularyCard({ item, enabled, onToggle }) {
         </button>
       </div>
 
-      <div className="space-y-2 text-sm">
-        <div>
+      <div className="space-y-2 text-xs sm:text-sm flex-1">
+        <div className="break-words">
           <span className="font-semibold text-gray-700">Pinyin:</span>{' '}
           <span className="text-gray-600">{item.pinyin}</span>
         </div>
-        <div>
+        <div className="break-words">
           <span className="font-semibold text-gray-700">Jyutping:</span>{' '}
           <span className="text-gray-600">{item.jyutping}</span>
         </div>
         {item.hanviet && (
-          <div>
+          <div className="break-words">
             <span className="font-semibold text-gray-700">Han Viet:</span>{' '}
             <span className="text-gray-600">{item.hanviet}</span>
           </div>
         )}
-        <div>
+        <div className="break-words">
           <span className="font-semibold text-gray-700">Vietnamese:</span>{' '}
           <span className="text-gray-600">{item.vietnamese}</span>
         </div>
-        <div>
+        <div className="break-words">
           <span className="font-semibold text-gray-700">English:</span>{' '}
           <span className="text-gray-600">{item.english}</span>
         </div>
