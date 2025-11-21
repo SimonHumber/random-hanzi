@@ -157,15 +157,14 @@ function TOCFLPractice() {
               Level
             </label>
             <div className="flex gap-2">
-              {[1, 2, 3, 4, 5].map((lvl) => (
+              {[1].map((lvl) => (
                 <button
                   key={lvl}
                   onClick={() => toggleLevel(lvl)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedLevels.includes(lvl)
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedLevels.includes(lvl)
                       ? 'bg-green-500 text-white'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                    }`}
                 >
                   {lvl}
                 </button>
@@ -182,11 +181,10 @@ function TOCFLPractice() {
                 <button
                   key={filter}
                   onClick={() => setCharacterFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    characterFilter === filter
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${characterFilter === filter
                       ? 'bg-green-500 text-white'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                    }`}
                 >
                   {filter === 'all' ? 'All' : filter === 'single' ? 'Single' : 'Multiple'}
                 </button>
@@ -203,11 +201,10 @@ function TOCFLPractice() {
                 <button
                   key={filter}
                   onClick={() => setStatusFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${
-                    statusFilter === filter
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize ${statusFilter === filter
                       ? 'bg-green-500 text-white'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                    }`}
                 >
                   {filter}
                 </button>
@@ -251,9 +248,8 @@ function TOCFLPractice() {
 function VocabularyCard({ item, enabled, onToggle }) {
   return (
     <div
-      className={`bg-white rounded-lg shadow-md p-6 border-2 ${
-        enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
-      }`}
+      className={`bg-white rounded-lg shadow-md p-6 border-2 ${enabled ? 'border-gray-200' : 'border-gray-400 opacity-60'
+        }`}
     >
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
@@ -268,11 +264,10 @@ function VocabularyCard({ item, enabled, onToggle }) {
         </div>
         <button
           onClick={onToggle}
-          className={`px-3 py-1 rounded text-sm font-medium ${
-            enabled
+          className={`px-3 py-1 rounded text-sm font-medium ${enabled
               ? 'bg-red-100 text-red-800 hover:bg-red-200'
               : 'bg-green-100 text-green-800 hover:bg-green-200'
-          }`}
+            }`}
         >
           {enabled ? 'Disable' : 'Enable'}
         </button>
