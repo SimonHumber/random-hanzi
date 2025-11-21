@@ -27,6 +27,30 @@ function SentencePractice() {
       return ''
     }
   })
+  const [selectedHSKLevels, setSelectedHSKLevels] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        return parsed.selectedHSKLevels || [1, 2, 3, 4, 5, 6, 7]
+      }
+      return [1, 2, 3, 4, 5, 6, 7]
+    } catch {
+      return [1, 2, 3, 4, 5, 6, 7]
+    }
+  })
+  const [selectedTOCFLLevels, setSelectedTOCFLLevels] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        return parsed.selectedTOCFLLevels || [1, 2, 3, 4, 5]
+      }
+      return [1, 2, 3, 4, 5]
+    } catch {
+      return [1, 2, 3, 4, 5]
+    }
+  })
   const [disabledIdsSet, setDisabledIdsSet] = useState(new Set())
 
   // Persist filters when they change
@@ -34,12 +58,14 @@ function SentencePractice() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         statusFilter,
-        searchTerm
+        searchTerm,
+        selectedHSKLevels,
+        selectedTOCFLLevels
       }))
     } catch (error) {
       console.error('Error saving Sentence filters:', error)
     }
-  }, [statusFilter, searchTerm])
+  }, [statusFilter, searchTerm, selectedHSKLevels, selectedTOCFLLevels])
 
   useEffect(() => {
     loadData()
@@ -53,7 +79,7 @@ function SentencePractice() {
 
   useEffect(() => {
     filterData()
-  }, [data, statusFilter, searchTerm, disabledIdsSet])
+  }, [data, statusFilter, searchTerm, disabledIdsSet, selectedHSKLevels, selectedTOCFLLevels])
 
   const loadData = async () => {
     setLoading(true)
@@ -64,6 +90,31 @@ function SentencePractice() {
 
   const filterData = () => {
     let filtered = [...data]
+
+    // Filter by HSK and TOCFL levels
+    const hskLevels = selectedHSKLevels || []
+    const tocflLevels = selectedTOCFLLevels || []
+    if (hskLevels.length > 0 || tocflLevels.length > 0) {
+      filtered = filtered.filter((item) => {
+        const hskLevel = item.hsk_level ? parseInt(item.hsk_level) : null
+        const tocflLevel = item.tocfl_level ? parseInt(item.tocfl_level) : null
+
+        const matchesHSK = hskLevels.length > 0 && hskLevel !== null && hskLevels.includes(hskLevel)
+        const matchesTOCFL = tocflLevels.length > 0 && tocflLevel !== null && tocflLevels.includes(tocflLevel)
+
+        // Show if matches HSK levels OR TOCFL levels (or both)
+        if (hskLevels.length > 0 && tocflLevels.length > 0) {
+          return matchesHSK || matchesTOCFL
+        } else if (hskLevels.length > 0) {
+          return matchesHSK
+        } else {
+          return matchesTOCFL
+        }
+      })
+    } else {
+      // If both filters are empty, show nothing
+      filtered = []
+    }
 
     // Filter by status using cached Set
     if (statusFilter === 'enabled') {
@@ -95,6 +146,46 @@ function SentencePractice() {
     setFilteredData(filtered)
   }
 
+  const toggleHSKLevel = (lvl) => {
+    setSelectedHSKLevels((prev) => {
+      const prevLevels = prev || []
+      if (prevLevels.includes(lvl)) {
+        const newLevels = prevLevels.filter((l) => l !== lvl)
+        // Allow empty only if TOCFL has at least one selected
+        if (newLevels.length === 0) {
+          const tocflLevels = selectedTOCFLLevels || []
+          if (tocflLevels.length > 0) {
+            return [] // Can be empty if TOCFL has selections
+          } else {
+            return [lvl] // Must keep at least one if TOCFL is also empty
+          }
+        }
+        return newLevels
+      }
+      return [...prevLevels, lvl].sort()
+    })
+  }
+
+  const toggleTOCFLLevel = (lvl) => {
+    setSelectedTOCFLLevels((prev) => {
+      const prevLevels = prev || []
+      if (prevLevels.includes(lvl)) {
+        const newLevels = prevLevels.filter((l) => l !== lvl)
+        // Allow empty only if HSK has at least one selected
+        if (newLevels.length === 0) {
+          const hskLevels = selectedHSKLevels || []
+          if (hskLevels.length > 0) {
+            return [] // Can be empty if HSK has selections
+          } else {
+            return [lvl] // Must keep at least one if HSK is also empty
+          }
+        }
+        return newLevels
+      }
+      return [...prevLevels, lvl].sort()
+    })
+  }
+
   const handleToggle = (index) => {
     toggleItem('SENTENCES', index)
     // Update the cached Set
@@ -117,7 +208,49 @@ function SentencePractice() {
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Sentence Practice</h2>
 
       <div className="mb-6 space-y-4">
-        <div className="flex flex-wrap gap-4 items-center">
+        <div className="flex flex-wrap gap-4 items-start">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              HSK Level
+            </label>
+            <div className="flex gap-2 flex-wrap">
+              {[1, 2, 3, 4, 5, 6, 7].map((lvl) => (
+                <button
+                  key={lvl}
+                  onClick={() => toggleHSKLevel(lvl)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedHSKLevels.includes(lvl)
+                    ? 'text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  style={selectedHSKLevels.includes(lvl) ? { backgroundColor: '#282c34' } : {}}
+                >
+                  {lvl}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              TOCFL Level
+            </label>
+            <div className="flex gap-2 flex-wrap">
+              {[1, 2, 3, 4, 5].map((lvl) => (
+                <button
+                  key={lvl}
+                  onClick={() => toggleTOCFLLevel(lvl)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedTOCFLLevels.includes(lvl)
+                    ? 'text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  style={selectedTOCFLLevels.includes(lvl) ? { backgroundColor: '#10b981' } : {}}
+                >
+                  {lvl}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Status
