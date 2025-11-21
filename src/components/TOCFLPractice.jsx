@@ -6,12 +6,8 @@ const STORAGE_KEY = 'randomHanzi_tocflPractice_filters'
 
 function TOCFLPractice() {
   const [selectedLevels, setSelectedLevels] = useState(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      return stored ? JSON.parse(stored).selectedLevels : [1]
-    } catch {
-      return [1]
-    }
+    // Force only level 1, ignore any stored values with multiple levels
+    return [1]
   })
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
@@ -42,11 +38,11 @@ function TOCFLPractice() {
   })
   const [disabledIdsSet, setDisabledIdsSet] = useState(new Set())
 
-  // Persist filters when they change
+  // Persist filters when they change (force only level 1)
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        selectedLevels,
+        selectedLevels: [1],
         characterFilter,
         statusFilter,
         searchTerm
@@ -54,7 +50,7 @@ function TOCFLPractice() {
     } catch (error) {
       console.error('Error saving TOCFL filters:', error)
     }
-  }, [selectedLevels, characterFilter, statusFilter, searchTerm])
+  }, [characterFilter, statusFilter, searchTerm])
 
   useEffect(() => {
     loadData()
@@ -86,14 +82,9 @@ function TOCFLPractice() {
   }
 
   const toggleLevel = (lvl) => {
-    setSelectedLevels((prev) => {
-      if (prev.includes(lvl)) {
-        const newLevels = prev.filter((l) => l !== lvl)
-        return newLevels.length > 0 ? newLevels : [lvl] // Keep at least one selected
-      } else {
-        return [...prev, lvl].sort()
-      }
-    })
+    // Only allow level 1
+    if (lvl !== 1) return
+    setSelectedLevels([1])
   }
 
   const filterData = () => {

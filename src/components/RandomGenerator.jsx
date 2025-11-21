@@ -5,7 +5,7 @@ import { isItemEnabled, toggleItem, getDisabledIds } from '../utils/storage'
 // Available levels for each category
 const AVAILABLE_LEVELS = {
   hsk: [1, 2],
-  tocfl: [1, 2, 3, 4, 5],
+  tocfl: [1],
   kanji: [1, 2],
   sentence: []
 }
@@ -72,7 +72,10 @@ const savePersistedItem = (category, selectedLevels, item) => {
 function RandomGenerator() {
   const persistedState = loadPersistedState()
   const [category, setCategory] = useState(persistedState?.category || 'hsk')
-  const [selectedLevels, setSelectedLevels] = useState(persistedState?.selectedLevels || [1]) // Array of selected levels
+  // Force TOCFL to only use level 1
+  const initialLevels = persistedState?.selectedLevels || [1]
+  const validatedLevels = persistedState?.category === 'tocfl' ? [1] : initialLevels
+  const [selectedLevels, setSelectedLevels] = useState(validatedLevels) // Array of selected levels
   const [characterFilter, setCharacterFilter] = useState(persistedState?.characterFilter || 'all') // 'all', 'single', 'multi'
   // Initialize with saved item if it exists
   const initialItem = loadPersistedItem(
@@ -430,7 +433,13 @@ function RandomGenerator() {
                   <button
                     key={lvl}
                     onClick={() => {
+                      // For TOCFL, only allow level 1
+                      if (category === 'tocfl' && lvl !== 1) return
+
                       setSelectedLevels((prev) => {
+                        // For TOCFL, always set to [1]
+                        if (category === 'tocfl') return [1]
+
                         if (prev.includes(lvl)) {
                           // If clicking a selected level, only remove it if there's another selected
                           const newLevels = prev.filter((l) => l !== lvl)
