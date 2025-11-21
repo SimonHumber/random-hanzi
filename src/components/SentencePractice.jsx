@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { List } from 'react-window'
 import { loadSentenceData } from '../utils/dataLoader'
 import { getDisabledIds, toggleItem } from '../utils/storage'
 
 const STORAGE_KEY = 'randomHanzi_sentencePractice_filters'
+const ROW_HEIGHT = 260
+const LIST_HEIGHT = 600
 
 function SentencePractice() {
   const [data, setData] = useState([])
@@ -99,6 +102,8 @@ function SentencePractice() {
     setDisabledIdsSet(new Set(disabledIds))
   }
 
+  const containerRef = useRef(null)
+
   if (loading) {
     return (
       <div>
@@ -152,20 +157,32 @@ function SentencePractice() {
         </div>
       </div>
 
-      <div className="space-y-6">
-        {filteredData.map((item, index) => {
-          const originalIndex = data.indexOf(item)
-          return (
-            <SentenceCard
-              key={originalIndex}
-              item={item}
-              index={originalIndex}
-              enabled={!disabledIdsSet.has(originalIndex)}
-              onToggle={() => handleToggle(originalIndex)}
-            />
-          )
-        })}
-      </div>
+      {filteredData.length > 0 && (
+        <div ref={containerRef} style={{ width: '100%', height: `${LIST_HEIGHT}px` }}>
+          <List
+            rowComponent={Row}
+            rowCount={filteredData.length}
+            rowHeight={ROW_HEIGHT}
+            rowProps={{ items: filteredData, allData: data, disabledIdsSet, handleToggle }}
+          />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Row({ index, style, items, allData, disabledIdsSet, handleToggle }) {
+  const item = items[index]
+  const originalIndex = allData.indexOf(item)
+
+  return (
+    <div style={style} className="px-2 pb-6">
+      <SentenceCard
+        item={item}
+        index={originalIndex}
+        enabled={!disabledIdsSet.has(originalIndex)}
+        onToggle={() => handleToggle(originalIndex)}
+      />
     </div>
   )
 }

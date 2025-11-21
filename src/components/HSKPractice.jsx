@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { List } from 'react-window'
 import { loadHSKData } from '../utils/dataLoader'
 import { getDisabledIds, toggleItem } from '../utils/storage'
 
 const STORAGE_KEY = 'randomHanzi_hskPractice_filters'
+const ROW_HEIGHT = 320
+const LIST_HEIGHT = 600
 
 function HSKPractice() {
   const [selectedLevels, setSelectedLevels] = useState(() => {
@@ -139,6 +142,8 @@ function HSKPractice() {
     setDisabledIdsSet(new Set(disabledIds))
   }
 
+  const containerRef = useRef(null)
+
   if (loading) {
     return (
       <div>
@@ -235,8 +240,28 @@ function HSKPractice() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredData.map((item) => (
+      {filteredData.length > 0 && (
+        <div ref={containerRef} style={{ width: '100%', height: `${LIST_HEIGHT}px` }}>
+          <List
+            rowComponent={Row}
+            rowCount={Math.ceil(filteredData.length / 3)}
+            rowHeight={ROW_HEIGHT}
+            rowProps={{ items: filteredData, disabledIdsSet, handleToggle }}
+          />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Row({ index, style, items, disabledIdsSet, handleToggle }) {
+  const startIndex = index * 3
+  const rowItems = items.slice(startIndex, startIndex + 3)
+
+  return (
+    <div style={style} className="px-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+        {rowItems.map((item) => (
           <VocabularyCard
             key={item.id}
             item={item}

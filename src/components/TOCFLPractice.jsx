@@ -1,13 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { List } from 'react-window'
 import { loadTOCFLData } from '../utils/dataLoader'
 import { getDisabledIds, toggleItem } from '../utils/storage'
 
 const STORAGE_KEY = 'randomHanzi_tocflPractice_filters'
+const ROW_HEIGHT = 320
+const LIST_HEIGHT = 600
 
 function TOCFLPractice() {
   const [selectedLevels, setSelectedLevels] = useState(() => {
-    // Force only level 1, ignore any stored values with multiple levels
-    return [1]
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored).selectedLevels : [1]
+    } catch {
+      return [1]
+    }
   })
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
@@ -38,11 +45,11 @@ function TOCFLPractice() {
   })
   const [disabledIdsSet, setDisabledIdsSet] = useState(new Set())
 
-  // Persist filters when they change (force only level 1)
+  // Persist filters when they change
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        selectedLevels: [1],
+        selectedLevels,
         characterFilter,
         statusFilter,
         searchTerm
@@ -50,7 +57,7 @@ function TOCFLPractice() {
     } catch (error) {
       console.error('Error saving TOCFL filters:', error)
     }
-  }, [characterFilter, statusFilter, searchTerm])
+  }, [selectedLevels, characterFilter, statusFilter, searchTerm])
 
   useEffect(() => {
     loadData()
@@ -82,9 +89,14 @@ function TOCFLPractice() {
   }
 
   const toggleLevel = (lvl) => {
-    // Only allow level 1
-    if (lvl !== 1) return
-    setSelectedLevels([1])
+    setSelectedLevels((prev) => {
+      if (prev.includes(lvl)) {
+        const newLevels = prev.filter((l) => l !== lvl)
+        return newLevels.length > 0 ? newLevels : [lvl] // Keep at least one selected
+      } else {
+        return [...prev, lvl].sort()
+      }
+    })
   }
 
   const filterData = () => {
@@ -129,6 +141,8 @@ function TOCFLPractice() {
     setDisabledIdsSet(new Set(disabledIds))
   }
 
+  const containerRef = useRef(null)
+
   if (loading) {
     return (
       <div>
@@ -148,7 +162,7 @@ function TOCFLPractice() {
               Level
             </label>
             <div className="flex gap-2">
-              {[1].map((lvl) => (
+              {[1, 2, 3, 4, 5].map((lvl) => (
                 <button
                   key={lvl}
                   onClick={() => toggleLevel(lvl)}
@@ -222,8 +236,28 @@ function TOCFLPractice() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredData.map((item) => (
+      {filteredData.length > 0 && (
+        <div ref={containerRef} style={{ width: '100%', height: `${LIST_HEIGHT}px` }}>
+          <List
+            rowComponent={Row}
+            rowCount={Math.ceil(filteredData.length / 3)}
+            rowHeight={ROW_HEIGHT}
+            rowProps={{ items: filteredData, disabledIdsSet, handleToggle }}
+          />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Row({ index, style, items, disabledIdsSet, handleToggle }) {
+  const startIndex = index * 3
+  const rowItems = items.slice(startIndex, startIndex + 3)
+
+  return (
+    <div style={style} className="px-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+        {rowItems.map((item) => (
           <VocabularyCard
             key={item.id}
             item={item}

@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { List } from 'react-window'
 import { loadKanjiData } from '../utils/dataLoader'
 import { getDisabledIds, toggleItem } from '../utils/storage'
 
 const STORAGE_KEY = 'randomHanzi_kanjiPractice_filters'
+const ROW_HEIGHT = 300
+const LIST_HEIGHT = 600
 
 function KanjiPractice() {
   const [selectedGrades, setSelectedGrades] = useState(() => {
@@ -122,6 +125,8 @@ function KanjiPractice() {
     setDisabledIdsSet(new Set(disabledIds))
   }
 
+  const containerRef = useRef(null)
+
   if (loading) {
     return (
       <div>
@@ -197,10 +202,30 @@ function KanjiPractice() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredData.map((item, index) => (
+      {filteredData.length > 0 && (
+        <div ref={containerRef} style={{ width: '100%', height: `${LIST_HEIGHT}px` }}>
+          <List
+            rowComponent={Row}
+            rowCount={Math.ceil(filteredData.length / 3)}
+            rowHeight={ROW_HEIGHT}
+            rowProps={{ items: filteredData, disabledIdsSet, handleToggle }}
+          />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Row({ index, style, items, disabledIdsSet, handleToggle }) {
+  const startIndex = index * 3
+  const rowItems = items.slice(startIndex, startIndex + 3)
+
+  return (
+    <div style={style} className="px-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+        {rowItems.map((item, idx) => (
           <KanjiCard
-            key={`${item.kanji}-${index}`}
+            key={`${item.kanji}-${startIndex + idx}`}
             item={item}
             enabled={!disabledIdsSet.has(item.kanji)}
             onToggle={() => handleToggle(item.kanji)}
