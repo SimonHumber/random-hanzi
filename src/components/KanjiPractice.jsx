@@ -74,7 +74,10 @@ function KanjiPractice() {
     const loadedArrays = await Promise.all(
       selectedGrades.map((grd) => loadKanjiData(grd))
     )
-    const loaded = loadedArrays.flat()
+    // Add grade property to each item
+    const loaded = loadedArrays.flatMap((arr, idx) => 
+      arr.map(item => ({ ...item, grade: selectedGrades[idx] }))
+    )
     setData(loaded)
     setLoading(false)
   }
@@ -257,7 +260,16 @@ function KanjiCard({ item, enabled, onToggle }) {
         }`}
     >
       <div className="flex justify-between items-start mb-4">
-        <div className="text-4xl font-bold text-gray-800">{item.kanji}</div>
+        <div>
+          <div className="text-4xl font-bold text-gray-800">{item.kanji}</div>
+          {item.grade && (
+            <div className="mt-1">
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full text-white" style={{ backgroundColor: '#a855f7' }}>
+                Grade {item.grade}
+              </span>
+            </div>
+          )}
+        </div>
         <button
           onClick={onToggle}
           className={`px-3 py-1 rounded text-sm font-medium ${enabled

@@ -83,7 +83,10 @@ function HSKPractice() {
     const loadedArrays = await Promise.all(
       selectedLevels.map((lvl) => loadHSKData(lvl))
     )
-    const loaded = loadedArrays.flat()
+    // Add level property to each item
+    const loaded = loadedArrays.flatMap((arr, idx) => 
+      arr.map(item => ({ ...item, level: selectedLevels[idx] }))
+    )
     setData(loaded)
     setLoading(false)
   }
@@ -305,6 +308,13 @@ function VocabularyCard({ item, enabled, onToggle }) {
           {item.simplifiedChinese && (
             <div className="text-lg sm:text-xl text-gray-600 mb-2 break-words">
               {item.simplifiedChinese}
+            </div>
+          )}
+          {item.level && (
+            <div className="mb-2">
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full text-white" style={{ backgroundColor: '#282c34' }}>
+                HSK {item.level}
+              </span>
             </div>
           )}
         </div>

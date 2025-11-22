@@ -111,7 +111,10 @@ function RandomGenerator() {
           // Load data from all selected levels and combine
           const hskDataPromises = selectedLevels.map((lvl) => loadHSKData(lvl))
           const hskDataArrays = await Promise.all(hskDataPromises)
-          data = hskDataArrays.flat()
+          // Add level property to each item
+          data = hskDataArrays.flatMap((arr, idx) => 
+            arr.map(item => ({ ...item, level: selectedLevels[idx] }))
+          )
           filteredData = data.filter((item) => isItemEnabled('HSK', item.id))
           // Filter by character count
           if (characterFilter === 'single') {
@@ -124,7 +127,10 @@ function RandomGenerator() {
           // Load data from all selected levels and combine
           const tocflDataPromises = selectedLevels.map((lvl) => loadTOCFLData(lvl))
           const tocflDataArrays = await Promise.all(tocflDataPromises)
-          data = tocflDataArrays.flat()
+          // Add level property to each item
+          data = tocflDataArrays.flatMap((arr, idx) => 
+            arr.map(item => ({ ...item, level: selectedLevels[idx] }))
+          )
           filteredData = data.filter((item) => isItemEnabled('TOCFL', item.id))
           // Filter by character count
           if (characterFilter === 'single') {
@@ -137,7 +143,10 @@ function RandomGenerator() {
           // Load data from all selected levels and combine
           const kanjiDataPromises = selectedLevels.map((lvl) => loadKanjiData(lvl))
           const kanjiDataArrays = await Promise.all(kanjiDataPromises)
-          data = kanjiDataArrays.flat()
+          // Add grade property to each item
+          data = kanjiDataArrays.flatMap((arr, idx) => 
+            arr.map(item => ({ ...item, grade: selectedLevels[idx] }))
+          )
           filteredData = data.filter((item) => isItemEnabled('KANJI', item.kanji))
           // Kanji are always single character, but we can still apply filter for consistency
           if (characterFilter === 'multi') {
@@ -207,6 +216,7 @@ function RandomGenerator() {
           if (category === 'sentence') {
             selectedItem.originalIndex = randomIndex
           }
+          // Level/grade should already be set from data loading above
           const newItem = { ...selectedItem, category }
           setCurrentItem(newItem)
           savePersistedItem(category, selectedLevels, newItem)
@@ -893,6 +903,13 @@ function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
             colorScheme={item.category === 'hsk' ? 'blue' : 'green'}
           />
         </div>
+        {item.level && (
+          <div className="flex justify-center gap-2 pt-2">
+            <span className="px-2 py-0.5 text-xs font-medium rounded-full text-white" style={{ backgroundColor: item.category === 'hsk' ? '#282c34' : '#10b981' }}>
+              {item.category === 'hsk' ? 'HSK' : 'TOCFL'} {item.level}
+            </span>
+          </div>
+        )}
         <div className="pt-2 text-sm text-gray-500">
           {item.characterCount} character{item.characterCount > 1 ? 's' : ''}
         </div>
@@ -958,6 +975,13 @@ function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
             colorScheme="purple"
           />
         </div>
+        {item.grade && (
+          <div className="flex justify-center gap-2 pt-2">
+            <span className="px-2 py-0.5 text-xs font-medium rounded-full text-white" style={{ backgroundColor: '#a855f7' }}>
+              Grade {item.grade}
+            </span>
+          </div>
+        )}
 
         <div className="pt-4 border-t border-gray-200">
           <button
@@ -1027,6 +1051,20 @@ function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
             colorScheme="orange"
           />
         </div>
+        {(item.hsk_level && item.hsk_level !== '0') || (item.tocfl_level && item.tocfl_level !== '0') ? (
+          <div className="flex justify-center gap-2 pt-2">
+            {item.hsk_level && item.hsk_level !== '0' && (
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full text-white" style={{ backgroundColor: '#282c34' }}>
+                HSK {item.hsk_level}
+              </span>
+            )}
+            {item.tocfl_level && item.tocfl_level !== '0' && (
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full text-white" style={{ backgroundColor: '#10b981' }}>
+                TOCFL {item.tocfl_level}
+              </span>
+            )}
+          </div>
+        ) : null}
 
         <div className="pt-4 border-t border-gray-200">
           <button

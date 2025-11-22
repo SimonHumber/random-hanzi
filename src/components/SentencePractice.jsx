@@ -337,6 +337,18 @@ function SentenceCard({ item, index, enabled, onToggle }) {
               {item.simplifiedChinese}
             </div>
           )}
+          <div className="flex gap-2 flex-wrap mb-2">
+            {item.hsk_level && item.hsk_level !== '0' && (
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full text-white" style={{ backgroundColor: '#282c34' }}>
+                HSK {item.hsk_level}
+              </span>
+            )}
+            {item.tocfl_level && item.tocfl_level !== '0' && (
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full text-white" style={{ backgroundColor: '#10b981' }}>
+                TOCFL {item.tocfl_level}
+              </span>
+            )}
+          </div>
         </div>
         <button
           onClick={onToggle}
