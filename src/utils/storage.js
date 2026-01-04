@@ -16,8 +16,14 @@ const STORAGE_KEYS = {
 
 export const getDisabledIds = (type) => {
   try {
-    const stored = localStorage.getItem(STORAGE_KEYS[type] || STORAGE_KEYS.CHARACTERS)
-    return stored ? JSON.parse(stored) : []
+    const key = STORAGE_KEYS[type] || STORAGE_KEYS.CHARACTERS
+    const stored = localStorage.getItem(key)
+    const ids = stored ? JSON.parse(stored) : []
+    // Normalize sentence IDs to numbers (they might be stored as strings)
+    if (type === 'SENTENCES') {
+      return ids.map(id => Number(id)).filter(id => !isNaN(id))
+    }
+    return ids
   } catch (error) {
     console.error('Error reading from localStorage:', error)
     return []
@@ -26,7 +32,12 @@ export const getDisabledIds = (type) => {
 
 export const setDisabledIds = (type, ids) => {
   try {
-    localStorage.setItem(STORAGE_KEYS[type] || STORAGE_KEYS.CHARACTERS, JSON.stringify(ids))
+    const key = STORAGE_KEYS[type] || STORAGE_KEYS.CHARACTERS
+    // Ensure sentence IDs are stored as numbers
+    const idsToStore = type === 'SENTENCES'
+      ? ids.map(id => Number(id)).filter(id => !isNaN(id))
+      : ids
+    localStorage.setItem(key, JSON.stringify(idsToStore))
   } catch (error) {
     console.error('Error writing to localStorage:', error)
   }
@@ -34,11 +45,13 @@ export const setDisabledIds = (type, ids) => {
 
 export const toggleItem = (type, id) => {
   const disabled = getDisabledIds(type)
-  const index = disabled.indexOf(id)
+  // Normalize ID to number for SENTENCES
+  const normalizedId = type === 'SENTENCES' ? Number(id) : id
+  const index = disabled.indexOf(normalizedId)
   if (index > -1) {
     disabled.splice(index, 1)
   } else {
-    disabled.push(id)
+    disabled.push(normalizedId)
   }
   setDisabledIds(type, disabled)
   return disabled
@@ -46,7 +59,9 @@ export const toggleItem = (type, id) => {
 
 export const isItemEnabled = (type, id) => {
   const disabled = getDisabledIds(type)
-  return !disabled.includes(id)
+  // Normalize ID to number for SENTENCES
+  const normalizedId = type === 'SENTENCES' ? Number(id) : id
+  return !disabled.includes(normalizedId)
 }
 
 // Get randomly disabled IDs for a category and level
@@ -113,7 +128,7 @@ export const randomlyDisableItems = (type, allItems, count, level = null, charac
   }
 
   const numToDisable = Math.min(count, enabledItems.length)
-  
+
   // Shuffle and select random items
   const shuffled = [...enabledItems].sort(() => Math.random() - 0.5)
   const toDisable = shuffled.slice(0, numToDisable)

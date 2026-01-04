@@ -155,6 +155,7 @@ function RandomGenerator() {
           break
         case 'sentence':
           data = await loadSentenceData()
+          // Get disabled IDs and verify
           filteredData = data
             .map((item, index) => ({ ...item, originalIndex: index }))
             .filter((item) => isItemEnabled('SENTENCES', item.originalIndex))
@@ -208,18 +209,31 @@ function RandomGenerator() {
         setCurrentItem(newItem)
         savePersistedItem(category, selectedLevels, newItem)
       } else {
-        // If no enabled items, use all data
+        // If no enabled items, try to find any enabled items from all data
         if (data.length > 0) {
-          const randomIndex = Math.floor(Math.random() * data.length)
-          const selectedItem = data[randomIndex]
-          // For sentences, add originalIndex
+          let enabledItems = data
+          // For sentences, filter out disabled ones
           if (category === 'sentence') {
-            selectedItem.originalIndex = randomIndex
+            enabledItems = data
+              .map((item, index) => ({ ...item, originalIndex: index }))
+              .filter((item) => isItemEnabled('SENTENCES', item.originalIndex))
           }
-          // Level/grade should already be set from data loading above
-          const newItem = { ...selectedItem, category }
-          setCurrentItem(newItem)
-          savePersistedItem(category, selectedLevels, newItem)
+          
+          if (enabledItems.length > 0) {
+            const randomIndex = Math.floor(Math.random() * enabledItems.length)
+            const selectedItem = enabledItems[randomIndex]
+            // For sentences, originalIndex should already be set
+            if (category === 'sentence' && !selectedItem.originalIndex) {
+              selectedItem.originalIndex = data.indexOf(selectedItem)
+            }
+            // Level/grade should already be set from data loading above
+            const newItem = { ...selectedItem, category }
+            setCurrentItem(newItem)
+            savePersistedItem(category, selectedLevels, newItem)
+          } else {
+            // No enabled items at all
+            console.warn('No enabled items available for', category)
+          }
         }
       }
     } catch (error) {
@@ -305,7 +319,9 @@ function RandomGenerator() {
             break
           case 'sentence':
             data = await loadSentenceData()
-            disabledIdsSet = new Set(getDisabledIds('SENTENCES'))
+            // Map items to include originalIndex before filtering
+            data = data.map((item, index) => ({ ...item, originalIndex: index }))
+            disabledIdsSet = new Set(getDisabledIds('SENTENCES').map(id => Number(id)))
             // Filter by HSK and TOCFL levels
             if (selectedSentenceHSKLevels.length > 0 || selectedSentenceTOCFLLevels.length > 0) {
               data = data.filter((item) => {
@@ -348,8 +364,10 @@ function RandomGenerator() {
         let disabled = 0
 
         if (category === 'sentence') {
-          data.forEach((item, index) => {
-            if (disabledIdsSet.has(index)) {
+          // For sentences, check against originalIndex (which is set before filtering)
+          data.forEach((item) => {
+            const originalIndex = item.originalIndex !== undefined ? Number(item.originalIndex) : null
+            if (originalIndex !== null && disabledIdsSet.has(originalIndex)) {
               disabled++
             } else {
               enabled++
@@ -724,10 +742,14 @@ function RandomGenerator() {
                   itemId = currentItem.originalIndex
                 }
 
-                if (itemId !== undefined) {
-                  toggleItem(currentItem.category.toUpperCase(), itemId)
+                if (itemId !== undefined && itemId !== null) {
+                  // Map category to storage type (sentence -> SENTENCES)
+                  const storageType = currentItem.category === 'sentence' ? 'SENTENCES' : currentItem.category.toUpperCase()
+                  toggleItem(storageType, itemId)
                   // Force re-render to update enabled state
                   setToggleKey(prev => prev + 1)
+                } else {
+                  console.warn('Cannot toggle: itemId is undefined or null', { currentItem, itemId })
                 }
               }}
               enabled={(() => {
@@ -740,7 +762,9 @@ function RandomGenerator() {
                 } else if (currentItem.category === 'sentence') {
                   itemId = currentItem.originalIndex
                 }
-                return itemId !== undefined ? isItemEnabled(currentItem.category.toUpperCase(), itemId) : true
+                // Map category to storage type (sentence -> SENTENCES)
+                const storageType = currentItem.category === 'sentence' ? 'SENTENCES' : currentItem.category.toUpperCase()
+                return itemId !== undefined ? isItemEnabled(storageType, itemId) : true
               })()}
             />
           </div>

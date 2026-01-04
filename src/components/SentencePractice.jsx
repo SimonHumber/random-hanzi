@@ -72,9 +72,10 @@ function SentencePractice() {
   }, [])
 
   useEffect(() => {
-    // Update disabled IDs cache when data changes
+    // Update disabled IDs cache when data changes - normalize to numbers
     const disabledIds = getDisabledIds('SENTENCES')
-    setDisabledIdsSet(new Set(disabledIds))
+    const normalizedIds = disabledIds.map(id => Number(id)).filter(id => !isNaN(id))
+    setDisabledIdsSet(new Set(normalizedIds))
   }, [data])
 
   useEffect(() => {
@@ -84,7 +85,9 @@ function SentencePractice() {
   const loadData = async () => {
     setLoading(true)
     const loaded = await loadSentenceData()
-    setData(loaded)
+    // Add originalIndex to each item
+    const dataWithIndex = loaded.map((item, index) => ({ ...item, originalIndex: index }))
+    setData(dataWithIndex)
     setLoading(false)
   }
 
@@ -116,15 +119,17 @@ function SentencePractice() {
       filtered = []
     }
 
-    // Filter by status using cached Set
+    // Filter by status using cached Set - use originalIndex, not filtered array index
     if (statusFilter === 'enabled') {
-      filtered = filtered.filter((item, index) =>
-        !disabledIdsSet.has(index)
-      )
+      filtered = filtered.filter((item) => {
+        const originalIndex = item.originalIndex !== undefined ? Number(item.originalIndex) : null
+        return originalIndex !== null && !disabledIdsSet.has(originalIndex)
+      })
     } else if (statusFilter === 'disabled') {
-      filtered = filtered.filter((item, index) =>
-        disabledIdsSet.has(index)
-      )
+      filtered = filtered.filter((item) => {
+        const originalIndex = item.originalIndex !== undefined ? Number(item.originalIndex) : null
+        return originalIndex !== null && disabledIdsSet.has(originalIndex)
+      })
     }
 
     // Filter by search term
@@ -188,9 +193,10 @@ function SentencePractice() {
 
   const handleToggle = (index) => {
     toggleItem('SENTENCES', index)
-    // Update the cached Set
+    // Update the cached Set - normalize to numbers
     const disabledIds = getDisabledIds('SENTENCES')
-    setDisabledIdsSet(new Set(disabledIds))
+    const normalizedIds = disabledIds.map(id => Number(id)).filter(id => !isNaN(id))
+    setDisabledIdsSet(new Set(normalizedIds))
   }
 
   const containerRef = useRef(null)
