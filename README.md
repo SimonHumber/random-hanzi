@@ -82,10 +82,11 @@ Random Hanzi is a React-based web application designed to help users practice an
 
 ### Data Sources
 
-- **Sentences**: [Chinese Sentence Miner](https://github.com/Destaq/chinese-sentence-miner)
+- **Sentences**: Gemini
 - **Cantonese Tones**: [Open Cantonese - Jyutping Tones Overview](https://opencantonese.org/cantonese-pronunciation-jyutping/tones/overview-cantonese-tones)
 - **Han Viet**: [Han Viet Pinyin Wordlist](https://github.com/ph0ngp/hanviet-pinyin-wordlist)
 - **HSK**: [Mandarin Bean - New HSK Vocabulary](https://mandarinbean.com/new-hsk-vocabulary/)
 - **TOCFL**: [Taiwan Representative Office in Germany](https://www.roc-taiwan.org/at_de/post/634.html)
 - **Kanji**: [Wikipedia - Kyōiku Kanji](https://en.wikipedia.org/wiki/Ky%C5%8Diku_kanji)
+- **Jyutping**: [Pinyin Jyutping library](https://github.com/Vocab-Apps/pinyin-jyutping)
 
