@@ -13,97 +13,6 @@
     "simplifiedChinese": "你的姓名和生日是什么？"
   },
   {
-    "pinyin": "wǒ xìng wáng, míngzi jiào dàwèi.",
-    "hanviet": "ngã tính vương, danh tự khiếu đại vệ.",
-    "jyutping": "ngo5 sing3 wong4, ming4 zi6 giu3 daai6 wai6.",
-    "writtenCantonese": "我姓王，個名叫大衛。",
-    "cantoneseJyutping": "ngo5 sing3 wong4, go3 meng2 giu3 daai6 wai6。",
-    "viet": "Tôi họ Vương, tên gọi là David.",
-    "english": "My surname is Wang, and my name is David.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我姓王，名字叫大衛。",
-    "simplifiedChinese": "我姓王，名字叫大卫。"
-  },
-  {
-    "pinyin": "nǐ jīnnián jǐ suì? niánjì duō dà?",
-    "hanviet": "nễ kim niên kỷ tuế? niên kỷ đa đại?",
-    "jyutping": "nei5 gam1 nin4 gei2 seoi3? nin4 gei2 do1 daai6?",
-    "writtenCantonese": "你今年幾多歲？幾大年紀？",
-    "cantoneseJyutping": "nei5 gam1 nin4 gei2 do1 seoi3？ gei2 daai6 nin4 gei2？",
-    "viet": "Năm nay bạn bao nhiêu tuổi? Tuổi tác bao lớn?",
-    "english": "How old are you this year? What is your age?",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "你今年幾歲？年紀多大？",
-    "simplifiedChinese": "你今年几岁？年纪多大？"
-  },
-  {
-    "pinyin": "qǐngwèn nǐ de diànhuà hàomǎ hé dìzhǐ?",
-    "hanviet": "thỉnh vấn nễ đích điện thoại hào mã hoạ địa chỉ?",
-    "jyutping": "cing2 man6 nei5 dik1 din6 waa6 hou6 maa5 wo4 dei6 zi2?",
-    "writtenCantonese": "請問你嘅電話號碼同埋地址係邊度？",
-    "cantoneseJyutping": "cing2 man6 nei5 ge3 din6 waa2 hou6 maa5 tung4 maai4 dei6 zi2 hai6 bin1 dou6？",
-    "viet": "Xin hỏi số điện thoại và địa chỉ của bạn?",
-    "english": "May I ask for your phone number and address?",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "請問你的電話號碼和地址？",
-    "simplifiedChinese": "请问你的电话号码和地址？"
-  },
-  {
-    "pinyin": "biǎogé shàng yào tián xìngbié, shì nán háishì nǚ?",
-    "hanviet": "biểu cách thượng yếu điền tính biệt, thị nam hoàn thị nữ?",
-    "jyutping": "biu2 gaak3 soeng6 jiu3 tin4 sing3 bit6, si6 naam4 waan4 si6 neoi5?",
-    "writtenCantonese": "表格上面要填性別，係男定係女？",
-    "cantoneseJyutping": "biu2 gaak3 soeng6 min6 jiu3 tin4 sing3 bit6, hai6 naam4 ding6 hai6 neoi5？",
-    "viet": "Trên biểu mẫu cần điền giới tính, là nam hay là nữ?",
-    "english": "The form requires gender, is it male or female?",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "表格上要填性別，是男還是女？",
-    "simplifiedChinese": "表格上要填性别，是男还是女？"
-  },
-  {
-    "pinyin": "nǐ de guójí shì nǎlǐ? nǐ zhù zài shénme dìfāng?",
-    "hanviet": "nễ đích quốc tịch thị na lý? nễ trú tại thậm ma địa phương?",
-    "jyutping": "nei5 dik1 gwok3 zik6 si6 naa5 leoi5? nei5 zyu6 zoi6 sam6 mo1 dei6 fong1?",
-    "writtenCantonese": "你嘅國籍係邊度？你喺邊個地方住？",
-    "cantoneseJyutping": "nei5 ge3 gwok3 zik6 hai6 bin1 dou6？ nei5 hai2 bin1 go3 dei6 fong1 zyu6？",
-    "viet": "Quốc tịch của bạn là ở đâu? Bạn sống ở địa phương nào?",
-    "english": "What is your nationality? What place do you live in?",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "你的國籍是哪裡？你住在什麼地方？",
-    "simplifiedChinese": "你的国籍是哪里？你住在什么地方？"
-  },
-  {
-    "pinyin": "wǒ jiā yǒu fùqīn, mǔqīn, gēge hé jiějiě.",
-    "hanviet": "ngã gia hữu phụ thân, mẫu thân, ca ca hoạ tỷ tỷ.",
-    "jyutping": "ngo5 gaa1 jau5 fu6 can1, mou5 can1, go1 go1 wo4 ze2 ze2.",
-    "writtenCantonese": "我屋企有爸爸、媽媽、哥哥同埋姐姐。",
-    "cantoneseJyutping": "ngo5 uk1 kei2 jau5 baa1 baa1, maa1 maa1, go1 go1 tung4 maai4 ze2 ze2。",
-    "viet": "Nhà tôi có cha, mẹ, anh trai và chị gái.",
-    "english": "My family has a father, mother, older brother, and older sister.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我家有父親、母親、哥哥和姊姊。",
-    "simplifiedChinese": "我家有父亲、母亲、哥哥和姊姊。"
-  },
-  {
-    "pinyin": "tā chuānzhe yījiàn hóngsè de yīfú.",
-    "hanviet": "tha xuyên trước nhất kiện hồng sắc đích y phục.",
-    "jyutping": "taa1 cyun1 zoek6 jat1 gin6 hung4 sik1 dik1 ji1 fuk6.",
-    "writtenCantonese": "佢著住一件紅色嘅衫。",
-    "cantoneseJyutping": "keoi5 zoek3 zyu6 jat1 gin6 hung4 sik1 ge3 saam1。",
-    "viet": "Anh ấy đang mặc một chiếc áo màu đỏ.",
-    "english": "He is wearing a piece of red clothing.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "他穿著一件紅色的衣服。",
-    "simplifiedChinese": "他穿着一件红色的衣服。"
-  },
-  {
     "pinyin": "tài wǎnle, wǒ děi zǒule.",
     "hanviet": "thái vãn liễu, ngã đắc tẩu liễu.",
     "jyutping": "taai3 maan5 liu5, ngo5 dak1 zau2 liu5.",
@@ -115,19 +24,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "太晚了，我得走了。",
     "simplifiedChinese": "太晚了，我得走了。"
-  },
-  {
-    "pinyin": "tā cháng lái zhège gōngyuán sànbu。",
-    "hanviet": "tha thường lai giá cá công viên tản bộ。",
-    "jyutping": "taa1 soeng4 loi4 ze5 go3 gung1 jyun2 saan3 bou6。",
-    "writtenCantonese": "佢成日嚟呢個公園行下。",
-    "cantoneseJyutping": "keoi5 sing4 jat6 lei4 ni1 go3 gung1 jyun2 haang4 haa5。",
-    "viet": "Anh ấy thường đến công viên này đi dạo.",
-    "english": "He often comes to this park for a walk.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "他常來這個公園散步。",
-    "simplifiedChinese": "他常来这个公园散步。"
   },
   {
     "pinyin": "wǒmen dōu zhù zài táiwān, bùshì rìběn rén。",
@@ -208,19 +104,6 @@
     "simplifiedChinese": "今天是十月五日，星期天。"
   },
   {
-    "pinyin": "nǐ shénme shíhòu yǒu kòng? xiàwǔ sān diǎnzhōng。",
-    "hanviet": "nễ thậm ma thời hậu hữu không? hạ ngọ tam điểm chung。",
-    "jyutping": "nei5 sam6 mo1 si4 hau6 jau5 hung3? haa6 ng5 saam1 dim2 zung1。",
-    "writtenCantonese": "你幾時得閒？下晝三點鐘。",
-    "cantoneseJyutping": "nei5 gei2 si4 dak1 haan4？ haa6 zau3 saam1 dim2 zung1。",
-    "viet": "Khi nào bạn có rảnh? 3 giờ chiều.",
-    "english": "When are you free? 3 o'clock in the afternoon.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "你什麼時候有空？下午三點鐘。",
-    "simplifiedChinese": "你什么时候有空？下午三点钟。"
-  },
-  {
     "pinyin": "yīgè xiǎoshí yǒu liùshí fēnzhōng。",
     "hanviet": "nhất cá tiểu thời hữu lục thập phân chung。",
     "jyutping": "jat1 go3 siu2 si4 jau5 luk6 sap6 fan1 zung1。",
@@ -247,19 +130,6 @@
     "simplifiedChinese": "从早上到晚上，他都在忙。"
   },
   {
-    "pinyin": "zhōumò dàjiā dōu xiànzài qù kàn tiānkōng。",
-    "hanviet": "chu mạt đại gia hiện tại khứ khán thiên không。",
-    "jyutping": "zau1 mut6 daai6 gaa1 dou1 jin6 zoi6 heoi3 hon3 tin1 hung1。",
-    "writtenCantonese": "週末大家而家去睇天空。",
-    "cantoneseJyutping": "zau1 mut6 daai6 gaa1 ji4 gaa1 heoi3 tai2 tin1 hung1。",
-    "viet": "Cuối tuần mọi người bây giờ đi ngắm bầu trời.",
-    "english": "Everyone is going to look at the sky now on the weekend.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "週末大家現在去看天空。",
-    "simplifiedChinese": "周末大家现在去看天空。"
-  },
-  {
     "pinyin": "chūntiān, xiàtiān, qiūtiān hé dōngtiān dōu hěn měi。",
     "hanviet": "xuân thiên, hạ thiên, thu thiên hoạ đông thiên đô ngận mỹ。",
     "jyutping": "ceon1 tin1, haa6 tin1, cau1 tin1 wo4 dung1 tin1 dou1 han2 mei5。",
@@ -271,32 +141,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "春天、夏天、秋天和冬天都很美。",
     "simplifiedChinese": "春天、夏天、秋天和冬天都很美。"
-  },
-  {
-    "pinyin": "zhè wèi xiānshēng hé tàitai dōu hěn niánqīng, bù lǎo。",
-    "hanviet": "giá vị tiên sinh hoạ thái thái đô ngận niên khinh, bất lão。",
-    "jyutping": "ze5 wai6 sin1 saang1 wo4 taai3 taai2 dou1 han2 nin4 heng1, bat1 lou5。",
-    "writtenCantonese": "呢位先生同太太都好後生，唔老。",
-    "cantoneseJyutping": "ni1 wai6 sin1 saang1 tung4 taai3 taai2 dou1 hou2 hau6 saang1, m4 lou5。",
-    "viet": "Vị tiên sinh và thái thái này đều rất trẻ, không già.",
-    "english": "This gentleman and his wife are both very young, not old.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "這位先生和太太都很年輕，不老。",
-    "simplifiedChinese": "这位先生和太太都很年轻，不老。"
-  },
-  {
-    "pinyin": "nánshēng hé nǚshēng dōu hěn xǐhuān zhè wèi xiǎojiě。",
-    "hanviet": "nam sinh hoạ nữ sinh đô ngận hỷ hoan giá vị tiểu tỷ。",
-    "jyutping": "naam4 sang1 wo4 neoi5 sang1 dou1 han2 hei2 fun1 ze5 wai6 siu2 ze2。",
-    "writtenCantonese": "男仔同女仔都好鍾意呢位小姐。",
-    "cantoneseJyutping": "naam4 zai2 tung4 neoi5 zai2 dou1 hou2 zung1 ji3 ni1 wai6 siu2 ze2。",
-    "viet": "Các bạn nam và bạn nữ đều rất thích vị cô nương này.",
-    "english": "Boys and girls all like this young lady very much.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "男生和女生都很喜歡這位小姐。",
-    "simplifiedChinese": "男生和女生都很喜欢这位小姐。"
   },
   {
     "pinyin": "wǒ de jiā yǒu wǔ gè jiārén: bàba, māma hé wǒ。",
@@ -338,19 +182,6 @@
     "simplifiedChinese": "我的哥哥和弟弟都比我高，姐姐和妹妹都很漂亮。"
   },
   {
-    "pinyin": "zhè wèi xiǎojiě hěn hǎo, yě zhēnde fēicháng kě'ài。",
-    "hanviet": "giá vị tiểu tỷ ngận hảo, dã chân đích phi thường khả ái。",
-    "jyutping": "ze5 wai6 siu2 ze2 han2 hou2, jaa5 zan1 dik1 fei1 soeng4 ho2 oi3。",
-    "writtenCantonese": "呢位小姐好好，亦都真係非常可愛。",
-    "cantoneseJyutping": "ni1 wai6 siu2 ze2 hou2 hou2, jik6 dou1 zan1 hai6 fei1 soeng4 ho2 oi3。",
-    "viet": "Cô nương này rất tốt, cũng thực sự vô cùng đáng yêu.",
-    "english": "This young lady is very good and also truly extremely cute.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "這位小姐很好，也真的非常可愛。",
-    "simplifiedChinese": "这位小姐很好，也真的非常可爱。"
-  },
-  {
     "pinyin": "wǒ jīntiān hěn gāoxìng, yě hěn kuàilè, yīnwèi wǒ ài wǒ de jiā。",
     "hanviet": "ngã kim thiên ngận cao hưng, dã ngận khoái lạc, nhân vị ngã ái ngã đích gia。",
     "jyutping": "ngo5 gam1 tin1 han2 gou1 hing3, jaa5 han2 faai3 lok6, jan1 wai6 ngo5 oi3 ngo5 dik1 gaa1。",
@@ -362,45 +193,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "我今天很高興，也很快樂，因為我愛我的家。",
     "simplifiedChinese": "我今天很高兴，也很快乐，因为我爱我的家。"
-  },
-  {
-    "pinyin": "kǎoshì de shíhòu wǒ huì hěn jǐnzhāng, dàn wǒ juéde bù nán。",
-    "hanviet": "khảo thí đích thời hậu ngã hội ngận khẩn trương, đãn ngã giáo đắc bất nan。",
-    "jyutping": "haau2 si5 dik1 si4 hau6 ngo5 wui6 han2 gan2 zoeng1, daan6 ngo5 gok3 dak1 bat1 naan4。",
-    "writtenCantonese": "考試嘅時候我會好緊張，但我覺唔難。",
-    "cantoneseJyutping": "haau2 si5 ge3 si4 hau6 ngo5 wui6 hou2 gan2 zoeng1, daan6 ngo5 gok3 dak1 m4 naan4。",
-    "viet": "Khi đi thi tôi sẽ rất lo lắng, nhưng tôi cảm thấy không khó.",
-    "english": "I get very nervous during exams, but I feel they are not difficult.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "考試的時候我會很緊張，但我覺得不難。",
-    "simplifiedChinese": "考试的时候我会很紧张，但我觉得不难。"
-  },
-  {
-    "pinyin": "tā hěn xǐhuān xiào, tā de liǎn hěn hǎokàn。",
-    "hanviet": "tha ngận hỷ hoan tiếu, tha đích kiểm ngận hảo khán。",
-    "jyutping": "taa1 han2 hei2 fun1 siu3, taa1 dik1 lim5 han2 hou2 hon3。",
-    "writtenCantonese": "佢好鍾意笑，佢個樣幾好睇。",
-    "cantoneseJyutping": "keoi5 hou2 zung1 ji3 siu3, keoi5 go3 joeng2 gei2 hou2 tai2。",
-    "viet": "Anh ấy rất thích cười, gương mặt anh ấy rất ưa nhìn.",
-    "english": "He likes to laugh very much; his face is very good-looking.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "他很喜歡笑，他的臉很好看。",
-    "simplifiedChinese": "他很喜欢笑，他的脸很好看。"
-  },
-  {
-    "pinyin": "tā zhǎng dé yǒu yīdiǎn pàng, dàn yě yǒu yīdiǎn ǎi, bù zěnme shòu。",
-    "hanviet": "tha trưởng đắc hữu nhất điểm bàn, đãn dã hữu nhất điểm ải, bất chẩm ma sấu。",
-    "jyutping": "taa1 zoeng2 dak1 jau5 jat1 dim2 bun6, daan6 jaa5 jau5 jat1 dim2 ai2, bat1 zam2 mo1 sau3。",
-    "writtenCantonese": "佢生得有一啲肥，但係亦都有一啲矮，唔係幾瘦。",
-    "cantoneseJyutping": "keoi5 saang1 dak1 jau5 jat1 di1 fei4, daan6 hai6 jik6 dou1 jau5 jat1 di1 ai2, m4 hai6 gei2 sau3。",
-    "viet": "Anh ấy trông hơi mập, nhưng cũng hơi thấp, không gầy lắm.",
-    "english": "He is a bit fat and also a bit short, not very thin.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "他長得有一點胖，但也有一點矮，不怎麼瘦。",
-    "simplifiedChinese": "他长得有一点胖，但也有一点矮，不怎么瘦。"
   },
   {
     "pinyin": "zhè shì dì yī cì wǒ mǎi zhème duō dōngxi。",
@@ -453,32 +245,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "這個東西太貴了，要一萬二千八百九十七塊錢。",
     "simplifiedChinese": "这个东西太贵了，要一万二千八百九十七块钱。"
-  },
-  {
-    "pinyin": "zhè wèi xiānshēng yǒu sān qiān sì bǎi wǔ shí liù yuán。",
-    "hanviet": "giá vị tiên sinh hữu tam thiên tứ bách ngũ thập lục nguyên。",
-    "jyutping": "ze5 wai6 sin1 saang1 jau5 saam1 cin1 sei3 baak3 ng5 sap6 luk6 jyun4。",
-    "writtenCantonese": "呢位先生有三千四百五十六蚊。",
-    "cantoneseJyutping": "ni1 wai6 sin1 saang1 jau5 saam1 cin1 sei3 baak3 ng5 sap6 luk6 man1。",
-    "viet": "Vị tiên sinh này có ba ngàn bốn trăm năm mươi sáu tệ.",
-    "english": "This gentleman has 3,456 yuan.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "這位先生有三千四百五十六元。",
-    "simplifiedChinese": "这位先生有三千四百五十六元。"
-  },
-  {
-    "pinyin": "zhèlǐ zhǐyǒu hěn shǎo de rén, shènzhì yǒu líng。",
-    "hanviet": "giá lý chỉ hữu ngận thiểu đích nhân, thậm chí hữu linh。",
-    "jyutping": "ze5 leoi5 zi2 jau5 han2 siu2 dik1 jan4, sam6 zi3 jau5 ling4。",
-    "writtenCantonese": "呢度得好少人，甚至係零。",
-    "cantoneseJyutping": "ni1 dou6 dak1 hou2 siu2 jan4, sam6 zi3 hai6 ling4。",
-    "viet": "Ở đây chỉ có rất ít người, thậm chí là bằng không.",
-    "english": "There are only very few people here, even zero.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "這裡只有很少的人，甚至有零。",
-    "simplifiedChinese": "这里只有很少的人，甚至有零。"
   },
   {
     "pinyin": "wǒmen dōu shì dàxuéshēng, tāmen shì wǒmen de hǎo péngyǒu。",
@@ -585,45 +351,6 @@
     "simplifiedChinese": "请注意，这个句子很重要。"
   },
   {
-    "pinyin": "wǒ yào qù xǐshǒujiān, ránhòu qù fànguǎn chīfàn。",
-    "hanviet": "ngã yếu khứ tẩy thủ gian, nhiên hậu khứ phạn quán cật phạn。",
-    "jyutping": "ngo5 jiu3 heoi3 sai2 sau2 gaan1, jin4 hau6 heoi3 faan6 gun2 hek3 faan6。",
-    "writtenCantonese": "我要去洗手間，之後去餐廳食飯。",
-    "cantoneseJyutping": "ngo5 jiu3 heoi3 sai2 sau2 gaan1, zi1 hau6 heoi3 caan1 teng1 sik6 faan6。",
-    "viet": "Tôi cần đi vệ sinh, sau đó đi nhà hàng ăn cơm.",
-    "english": "I need to go to the restroom, then go to a restaurant to eat.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我要去洗手間，然後去飯館吃飯。",
-    "simplifiedChinese": "我要去洗手间，然后去饭馆吃饭。"
-  },
-  {
-    "pinyin": "wǒ xǐhuān chànggē hé tiàowǔ, dànshì wǒ dìdi xǐhuān dǎqiú.",
-    "hanviet": "ngã hỷ hoan xướng ca hoạ khiêu vũ, đãn thị ngã đệ đệ hỷ hoan đả cầu.",
-    "jyutping": "ngo5 hei2 fun1 coeng3 go1 wo4 tiu3 mou5, daan6 si6 ngo5 dai6 dai6 hei2 fun1 daa2 kau4.",
-    "writtenCantonese": "我鍾意唱歌同埋跳舞，但係我細佬鍾意打波。",
-    "cantoneseJyutping": "ngo5 zung1 ji3 coeng3 go1 tung4 maai4 tiu3 mou5, daan6 hai6 ngo5 sai3 lou2 zung1 ji3 daa2 bo1。",
-    "viet": "Tôi thích ca hát và nhảy múa, nhưng em trai tôi lại thích chơi bóng.",
-    "english": "I like singing and dancing, but my younger brother likes playing ball.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我喜歡唱歌和跳舞，但是我弟弟喜歡打球。",
-    "simplifiedChinese": "我喜欢唱歌和跳舞，但是我弟弟喜欢打球。"
-  },
-  {
-    "pinyin": "tā měitiān kàn bàozhǐ, yě xǐhuān zài diànnǎo shàng kàn diànyǐng.",
-    "hanviet": "tha mỗi thiên khán báo chỉ, dã hỷ hoan tại điện não thượng khán điện ảnh.",
-    "jyutping": "taa1 mui5 tin1 hon3 bou3 zi2, jaa5 hei2 fun1 zoi6 din6 nou5 soeng6 hon3 din6 jing2.",
-    "writtenCantonese": "佢每日都睇報紙，亦都鍾意喺電腦度睇電影。",
-    "cantoneseJyutping": "keoi5 mui5 jat6 dou1 tai2 bou3 zi2, jik6 dou1 zung1 ji3 hai2 din6 nou5 dou6 tai2 din6 jing2。",
-    "viet": "Anh ấy mỗi ngày đều đọc báo, cũng thích xem phim trên máy tính.",
-    "english": "He reads the newspaper every day and also likes watching movies on the computer.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "他每天看報紙，也喜歡在電腦上看電影。",
-    "simplifiedChinese": "他每天看报纸，也喜欢在电脑上看电影。"
-  },
-  {
     "pinyin": "zuótiān wǎnshàng wǒ shuìjiào yǐqián, tīngle yīdiǎn yīnyuè.",
     "hanviet": "tạc thiên vãn thướng ngã thuỵ giác dĩ tiền, thính liễu nhất điểm âm nhạc.",
     "jyutping": "zok6 tin1 maan5 soeng6 ngo5 seoi6 gaau3 ji5 cin4, ting1 liu5 jat1 dim2 jam1 ngok6.",
@@ -635,19 +362,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "昨天晚上我睡覺以前，聽了一點音樂。",
     "simplifiedChinese": "昨天晚上我睡觉以前，听了一点音乐。"
-  },
-  {
-    "pinyin": "gēge zhèngzài yùndòng, tā zài wàimiàn pǎobù.",
-    "hanviet": "ca ca chính tại vận động, tha tại ngoại diện bào bộ.",
-    "jyutping": "go1 go1 zing3 zoi6 wan6 dung6, taa1 zoi6 ngoi6 min6 paau2 bou6.",
-    "writtenCantonese": "哥哥做緊運動，佢喺出面跑步。",
-    "cantoneseJyutping": "go1 go1 zou6 gan2 wan6 dung6, keoi5 hai2 ceot1 min6 paau2 bou6。",
-    "viet": "Anh trai đang vận động, anh ấy đang chạy bộ ở bên ngoài.",
-    "english": "Elder brother is exercising; he is running outside.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "哥哥正在運動，他在外面跑步。",
-    "simplifiedChinese": "哥哥正在运动，他在外面跑步。"
   },
   {
     "pinyin": "tā bù xǐhuān yóuyǒng, tā xǐhuān tī zúqiú.",
@@ -676,19 +390,6 @@
     "simplifiedChinese": "这里的图书馆在银行的前面，邮局的旁边。"
   },
   {
-    "pinyin": "zhuōzi shàngmiàn yǒu yī běn shū, zhuōzi xiàmiàn yǒu yī zhī māo.",
-    "hanviet": "trác tử thượng diện hữu nhất bản thư, trác tử hạ diện hữu nhất chích miêu.",
-    "jyutping": "coek3 zi2 soeng6 min6 jau5 jat1 bun2 syu1, coek3 zi2 haa6 min6 jau5 jat1 zi1 maau1.",
-    "writtenCantonese": "枱面有一本書，枱底有一隻貓。",
-    "cantoneseJyutping": "toi2 min6 jau5 jat1 bun2 syu1, toi2 dai2 jau5 jat1 zek3 maau1。",
-    "viet": "Trên mặt bàn có một cuốn sách, dưới gầm bàn có một con mèo.",
-    "english": "There is a book on top of the table, and a cat under the table.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "桌子上面有一本書，桌子下面有一隻貓。",
-    "simplifiedChinese": "桌子上面有一本书，桌子下面有一只猫。"
-  },
-  {
     "pinyin": "jiàoshì lǐmiàn yǒu hěnduō xuéshēng, wàimiàn méiyǒu rén.",
     "hanviet": "giáo thất lý diện hữu ngận đa học sinh, ngoại diện một hữu nhân.",
     "jyutping": "gaau3 sat1 leoi5 min6 jau5 han2 do1 hok6 saang1, ngoi6 min6 mut6 jau5 jan4.",
@@ -702,19 +403,6 @@
     "simplifiedChinese": "教室里面有很多学生，外面没有人。"
   },
   {
-    "pinyin": "nǐ shì zuò huǒchē háishì zuò fēijī qù lǚyóu?",
-    "hanviet": "nễ thị toạ hoả xa hoàn thị toạ phi cơ khứ lữ du?",
-    "jyutping": "nei5 si6 zo6 fo2 ce1 waan4 si6 zo6 fei1 gei1 heoi3 leoi5 jau4?",
-    "writtenCantonese": "你係搭火車定係搭飛機去旅行？",
-    "cantoneseJyutping": "nei5 hai6 daap3 fo2 ce1 ding6 hai6 daap3 fei1 gei1 heoi3 leoi5 hang4？",
-    "viet": "Bạn là đi tàu hỏa hay đi máy bay để đi du lịch?",
-    "english": "Are you taking a train or a plane to go traveling?",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "你是坐火車還是坐飛機去旅遊？",
-    "simplifiedChinese": "你是坐火车还是坐飞机去旅游？"
-  },
-  {
     "pinyin": "wǒ měitiān zǒulù qù shàngxué, bù zuò gōngchē.",
     "hanviet": "ngã mỗi thiên tẩu lộ khứ thướng học, bất toạ công xa.",
     "jyutping": "ngo5 mui5 jat6 zau2 lou6 heoi3 soeng5 hok6, bat1 zo6 gung1 ce1.",
@@ -726,19 +414,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "我每天走路去上學，不坐公車。",
     "simplifiedChinese": "我每天走路去上学，不坐公车。"
-  },
-  {
-    "pinyin": "wǒ bù xǐhuān chī yú, wǒ xǐhuān chī ròu hé cài。",
-    "hanviet": "ngã bất hỷ hoan cật ngư, ngã hỷ hoan cật nhục hoạ thái。",
-    "jyutping": "ngo5 bat1 hei2 fun1 hek3 jyu4, ngo5 hei2 fun1 hek3 juk6 wo4 coi3。",
-    "writtenCantonese": "我唔鍾意食魚，我鍾意食肉同埋菜。",
-    "cantoneseJyutping": "ngo5 m4 zung1 ji3 sik6 jyu4, ngo5 zung1 ji3 sik6 juk6 tung4 maai4 coi3。",
-    "viet": "Tôi không thích ăn cá, tôi thích ăn thịt và rau.",
-    "english": "I don't like eating fish; I like eating meat and vegetables.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我不喜歡吃魚，我喜歡吃肉和菜。",
-    "simplifiedChinese": "我不喜欢吃鱼，我喜欢吃肉和菜。"
   },
   {
     "pinyin": "nǐ xiǎng hē shuǐ, hē chá háishì hē kāfēi?",
@@ -767,32 +442,6 @@
     "simplifiedChinese": "他的早饭是面包、鸡蛋和牛奶。"
   },
   {
-    "pinyin": "wǒ xiànzài yòu è yòu kě, wǒmen diǎncài ba。",
-    "hanviet": "ngã hiện tại hựu ngạ hựu khát, ngã môn điểm thái ba。",
-    "jyutping": "ngo5 jin6 zoi6 jau6 ngo6 jau6 hot3, ngo5 mun4 dim2 coi3 baa1。",
-    "writtenCantonese": "我而家又肚餓又頸渴，我哋點菜啦。",
-    "cantoneseJyutping": "ngo5 ji4 gaa1 jau6 tou5 ngo6 jau6 geng2 hot3, ngo5 dei6 dim2 coi3 laa1。",
-    "viet": "Bây giờ tôi vừa đói vừa khát, chúng ta gọi món đi.",
-    "english": "I am both hungry and thirsty now; let's order food.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我現在又餓又渴，我們點菜吧。",
-    "simplifiedChinese": "我现在又饿又渴， order点菜吧。"
-  },
-  {
-    "pinyin": "yéye zuìjìn shēntǐ bù tài shūfú, tóu hěn téng。",
-    "hanviet": "gia gia tối cận thân thể bất thái thư phục, đầu ngận đông。",
-    "jyutping": "je4 je4 zeoi3 gan6 san1 tai2 bat1 taai3 syu1 fuk6, tau4 han2 tang4。",
-    "writtenCantonese": "爺爺最近身體唔係幾舒服，頭好痛。",
-    "cantoneseJyutping": "je4 je4 zeoi3 gan6 san1 tai2 m4 hai6 gei2 syu1 fuk6, tau4 hou2 tung3。",
-    "viet": "Ông nội dạo này cơ thể không được khỏe, đầu rất đau.",
-    "english": "Grandpa hasn't been feeling very well lately; his head hurts a lot.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "爺爺最近身體不太舒服，頭很疼。",
-    "simplifiedChinese": "爷爷最近身体不太舒服，头很疼。"
-  },
-  {
     "pinyin": "wǒ gǎnmàole, yào qù yīyuàn kàn yīshēng hé chīyào。",
     "hanviet": "ngã cảm mạo liễu, yếu khứ y viện khán y sinh hoạ cật dược。",
     "jyutping": "ngo5 gam2 mou6 liu5, jiu3 heoi3 ji1 jyun2 hon3 ji1 saang1 wo4 hek3 joek6。",
@@ -819,45 +468,6 @@
     "simplifiedChinese": "这里的天气夏天很热，冬天很冷。"
   },
   {
-    "pinyin": "wàimiàn zhèngzài xiàyǔ, méiyǒu xiàxuě, kěshì guàfēngle。",
-    "hanviet": "ngoại diện chính tại hạ vũ, một hữu hạ tuyết, khả thị quát phong liễu。",
-    "jyutping": "ngoi6 min6 zing3 zoi6 haa6 jyu5, mut6 jau5 haa6 syut3, ho2 si6 gwaat3 fung1 liu5。",
-    "writtenCantonese": "出面落緊雨，冇落雪，但係打大風。",
-    "cantoneseJyutping": "ceot1 min6 lok6 gan2 jyu5, mou5 lok6 syut3, daan6 hai6 daa2 daai6 fung1。",
-    "viet": "Bên ngoài đang mưa, không có tuyết rơi, nhưng trời đang nổi gió.",
-    "english": "It is raining outside, not snowing, but it has become windy.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "外面正在下雨，沒有下雪，可是颳風了。",
-    "simplifiedChinese": "外面正在下雨，没有下雪，可是刮风了。"
-  },
-  {
-    "pinyin": "nǐ xǐhuān shénme yánsè? hóngsè, lánsè háishì báisè?",
-    "hanviet": "nễ hỷ hoan thậm ma nhan sắc? hồng sắc, lam sắc hoàn thị bạch sắc?",
-    "jyutping": "nei5 hei2 fun1 sam6 mo1 ngan4 sik1? hung4 sik1, laam4 sik1 waan4 si6 baak6 sik1?",
-    "writtenCantonese": "你鍾意咩顏色？紅色、藍色定係白色？",
-    "cantoneseJyutping": "nei5 zung1 ji3 me1 ngan4 sik1？ hung4 sik1, laam4 sik1 ding6 hai6 baak6 sik1？",
-    "viet": "Bạn thích màu gì? Màu đỏ, màu xanh da trời hay màu trắng?",
-    "english": "What color do you like? Red, blue, or white?",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "你喜歡什麼顏色？紅色、藍色還是白色？",
-    "simplifiedChinese": "你喜欢什么颜色？红色、蓝色还是白色？"
-  },
-  {
-    "pinyin": "tā jīntiān chuānle yījiàn báisè de chènshān hé hēisè de kùzi。",
-    "hanviet": "tha kim thiên xuyên liễu nhất kiện bạch sắc đích sấn sam hoạ hắc sắc đích khố tử。",
-    "jyutping": "taa1 gam1 tin1 cyun1 liu5 jat1 gin6 baak6 sik1 dik1 can3 saam1 wo4 hak1 sik1 dik1 fu3 zi2。",
-    "writtenCantonese": "佢今日著咗一件白色嘅恤衫同埋黑色嘅褲。",
-    "cantoneseJyutping": "keoi5 gam1 jat6 zoek3 zo2 jat1 gin6 baak6 sik1 ge3 seot1 saam1 tung4 maai4 hak1 sik1 ge3 fu3。",
-    "viet": "Hôm nay anh ấy mặc một chiếc áo sơ mi trắng và quần đen.",
-    "english": "He wore a white shirt and black pants today.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "他今天穿了一件白色的襯衫和黑色的褲子。",
-    "simplifiedChinese": "他今天穿了一件白色的衬衫和黑色的裤子。"
-  },
-  {
     "pinyin": "zhè shuāng xiézi hé zhè shuāng wàzi dōu hěn guì。",
     "hanviet": "giá song hài tử hoạ giá song vạt tử đô ngận quý。",
     "jyutping": "ze5 soeng1 haai4 zi2 wo4 ze5 soeng1 mat6 zi2 dou1 han2 gwai3。",
@@ -869,97 +479,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "這雙鞋子和這雙襪子都很貴。",
     "simplifiedChinese": "这双鞋子和这双袜子都很贵。"
-  },
-  {
-    "pinyin": "wǒjiā yǒu yī zhī gǒu, liǎng zhī māo hé sān zhī niǎo。",
-    "hanviet": "ngã gia hữu nhất chích cẩu, lưỡng chích miêu hoạ tam chích điểu。",
-    "jyutping": "ngo5 gaa1 jau5 jat1 zek3 gau2, loeng5 zek3 maau1 wo4 saam1 zek3 niu5。",
-    "writtenCantonese": "我屋企有一隻狗、兩隻貓同埋三隻雀。",
-    "cantoneseJyutping": "ngo5 uk1 kei2 jau5 jat1 zek3 gau2, loeng5 zek3 maau1 tung4 maai4 saam1 zek3 zoek3。",
-    "viet": "Nhà tôi có một con chó, hai con mèo và ba con chim.",
-    "english": "My house has one dog, two cats, and three birds.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我家有一隻狗、兩隻貓和三隻鳥。",
-    "simplifiedChinese": "我家有一只狗、两只猫 och 三只鸟。"
-  },
-  {
-    "pinyin": "fángjiān lǐ yǒu yī zhāng chuáng, yī zhāng zhuōzi hé liǎng bǎ yǐzi。",
-    "hanviet": "phòng gian lý hữu nhất trương sàng, nhất trương trác tử hoạ lưỡng bả ỷ tử。",
-    "jyutping": "fong4 gaan1 leoi5 jau5 jat1 zoeng1 cong4, jat1 zoeng1 coek3 zi2 wo4 loeng5 baa2 ji2 zi2。",
-    "writtenCantonese": "房入面有一張床、一張枱同埋兩張凳。",
-    "cantoneseJyutping": "fong2 jap6 min6 jau5 jat1 zoeng1 cong4, jat1 zoeng1 toi2 tung4 maai4 loeng5 zoeng1 dang3。",
-    "viet": "Trong phòng có một chiếc giường, một cái bàn và hai cái ghế.",
-    "english": "There is a bed, a table, and two chairs in the room.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "房間裡有一張床、一張桌子和兩把椅子。",
-    "simplifiedChinese": "房间里有一张床、一张桌子和两把椅子。"
-  },
-  {
-    "pinyin": "qǐng bāng wǒ bǎ mén hé chuānghù guānshàng, zài bǎ dēng kāishàng。",
-    "hanviet": "thỉnh bang ngã bả môn hoạ song hộ quan thượng, tái bả đăng khai thượng。",
-    "jyutping": "cing2 bong1 ngo5 baa2 mun4 wo4 coeng1 wu6 gwaan1 soeng6, zoi3 baa2 dang1 hoi1 soeng6。",
-    "writtenCantonese": "唔該幫我閂咗門同埋窗佢，再開埋支燈。",
-    "cantoneseJyutping": "m4 goi1 bong1 ngo5 saan1 zo2 mun4 tung4 maai4 coeng1 keoi5, zoi3 hoi1 maai4 zi1 dang1。",
-    "viet": "Xin hãy giúp tôi đóng cửa chính và cửa sổ lại, sau đó bật đèn lên.",
-    "english": "Please help me close the door and window, then turn on the light.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "請幫我把門和窗戶關上，再把燈開上。",
-    "simplifiedChinese": "请帮我把门和窗户关上，再把灯开上。"
-  },
-  {
-    "pinyin": "wǒ de qiánbāo hé yàoshi dōu bùjiànle, wǒ zhèngzài zhǎo。",
-    "hanviet": "ngã đích tiền bao hoạ thược thi đô bất kiến liễu, ngã chính tại trảo。",
-    "jyutping": "ngo5 dik1 cin4 baau1 wo4 jiu3 si6 dou1 bat1 gin3 liu5, ngo5 zing3 zoi6 zaau2。",
-    "writtenCantonese": "我個銀包同埋條鎖匙都唔見咗，我搵緊。",
-    "cantoneseJyutping": "ngo5 go3 ngan4 baau1 tung4 maai4 tiu4 so2 si4 dou1 m4 gin3 zo2, ngo5 wan2 gan2。",
-    "viet": "Ví tiền và chìa khóa của tôi đều không thấy đâu nữa, tôi đang tìm.",
-    "english": "My wallet and keys are gone; I am looking for them right now.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我的錢包和鑰匙都不見了，我正在找。",
-    "simplifiedChinese": "我的钱包和钥匙都不见了，我正在找。"
-  },
-  {
-    "pinyin": "zhè zhī bǐ shì wǒ de, nǐ kéyǐ yòng zhè zhāng zhǐ xiě zì。",
-    "hanviet": "giá chi bút thị ngã đích, nễ khả dĩ dụng giá trương chỉ tả tự。",
-    "jyutping": "ze5 zi1 bat1 si6 ngo5 dik1, nei5 ho2 ji5 jung6 ze5 zoeng1 zi2 se2 zi6。",
-    "writtenCantonese": "呢支筆係我嘅，你可以用呢張紙寫字。",
-    "cantoneseJyutping": "ni1 zi1 bat1 hai6 ngo5 ge3, nei5 ho2 ji5 jung6 ni1 zoeng1 zi2 se2 zi6。",
-    "viet": "Chiếc bút này là của tôi, bạn có thể dùng tờ giấy này để viết chữ.",
-    "english": "This pen is mine; you can use this piece of paper to write.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "這支筆是我的，你可以用這張紙寫字。",
-    "simplifiedChinese": "这支笔 index我的，你可以用这张纸写字。"
-  },
-  {
-    "pinyin": "wǒ chángcháng qù túshūguǎn jiè shū, yǒushíhòu yě qù hái shū。",
-    "hanviet": "ngã thường thường khứ đồ thư quán tá thư, hữu thời hậu dã khứ hoàn thư。",
-    "jyutping": "ngo5 soeng4 soeng4 heoi3 tou4 syu1 gun2 ze3 syu1, jau5 si4 hau6 jaa5 heoi3 waan4 syu1。",
-    "writtenCantonese": "我成日去圖書館借書，有時亦會去還書。",
-    "cantoneseJyutping": "ngo5 sing4 jat6 heoi3 tou4 syu1 gun2 ze3 syu1, jau5 si4 jik6 wui6 heoi3 waan4 syu1。",
-    "viet": "Tôi thường xuyên đến thư viện mượn sách, có lúc cũng đến trả sách.",
-    "english": "I often go to the library to borrow books, and sometimes I go to return them.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我常常去圖書館借書，有時候也去還書。",
-    "simplifiedChinese": "我常常去图书馆借书，有时候也去还书。"
-  },
-  {
-    "pinyin": "suīrán zhège dōngxi hěn zhòng, dànshì tā hái nǎ de dòng。",
-    "hanviet": "tuy nhiên giá cá đông tây ngận trọng, đãn thị tha hoàn nã đắc động。",
-    "jyutping": "seoi1 jin4 ze5 go3 dung1 sai1 han2 zung6, daan6 si6 taa1 waan4 naa4 dak1 dung6。",
-    "writtenCantonese": "雖然呢樣嘢好重，但係佢仲攞得郁。",
-    "cantoneseJyutping": "seoi1 jin4 ni1 joeng6 je5 hou2 zung6, daan6 hai6 keoi5 zung6 lo2 dak1 juk1。",
-    "viet": "Mặc dù thứ này rất nặng, nhưng anh ấy vẫn có thể cầm nổi.",
-    "english": "Although this thing is heavy, he can still carry it.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "雖然這個東西很重，但是他還拿得動。",
-    "simplifiedChinese": "虽然这个东西很重，但是他还拿得动。"
   },
   {
     "pinyin": "yīnwèi tā hěn máng, suǒyǐ tā méiyǒu shíjiān sòng lǐwù gěi wǒ。",
@@ -975,71 +494,6 @@
     "simplifiedChinese": "因为他很忙，所以他没有时间送礼物给我。"
   },
   {
-    "pinyin": "rúguǒ nǐ yǐjīng zuò wánle, jiù kéyǐ qù wánr le。",
-    "hanviet": "như quả nễ dĩ kinh tố hoàn liễu, tựu khả dĩ khứ ngoạn nhi liễu。",
-    "jyutping": "jyu4 gwo2 nei5 ji5 ging1 zou6 jyun4 liu5, zau6 ho2 ji5 heoi3 waan2 liu5。",
-    "writtenCantonese": "如果你已經做完，就可以去玩喇。",
-    "cantoneseJyutping": "jyu4 gwo2 nei5 ji5 ging1 zou6 jyun4, zau6 ho2 ji5 heoi3 waan2 laa3。",
-    "viet": "Nếu bạn đã làm xong rồi thì có thể đi chơi được rồi.",
-    "english": "If you have already finished, then you can go play.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "如果你已經做完了，就可以去玩兒了。",
-    "simplifiedChinese": "如果你已经做完了，就可以去玩儿了。"
-  },
-  {
-    "pinyin": "lí zhèlǐ bù yuǎn yǒu yīgè dìtú, kěyǐ gàosù nǐ wǎng nǎlǐ zǒu。",
-    "hanviet": "ly giá lý bất viễn hữu nhất cá địa đồ, khả dĩ cáo tố nễ vãng na lý tẩu。",
-    "jyutping": "lei4 ze5 leoi5 bat1 jyun5 jau5 jat1 go3 dei6 tou4, ho2 ji5 gou3 sou3 nei5 wong5 naa5 leoi5 zau2。",
-    "writtenCantonese": "離呢度唔遠有一個地圖，可以話畀你知向邊度走。",
-    "cantoneseJyutping": "lei4 ni1 dou6 m4 jyun5 jau5 jat1 go3 dei6 tou4, ho2 ji5 waa6 bei2 nei5 zi1 hoeng3 bin1 dou6 zau2。",
-    "viet": "Cách đây không xa có một bản đồ, có thể cho bạn biết đi hướng nào.",
-    "english": "There is a map not far from here that can tell you which way to go.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "離這裡不遠有一個地圖，可以告訴你往哪裡走。",
-    "simplifiedChinese": "离这里不远有一个地图，可以告诉你往哪里走。"
-  },
-  {
-    "pinyin": "wǒ bǎ lǐwù fàng zài zhuōzi shàng, děng tā lái ná dào gōngsī sòng rén。",
-    "hanviet": "ngã bả lễ vật phóng tại trác tử thướng, đẳng tha lai nã đáo công ti tống nhân。",
-    "jyutping": "ngo5 baa2 lai5 mat6 fong3 zoi6 coek3 zi2 soeng6, dang2 taa1 loi4 naa4 dou3 gung1 si1 sung3 jan4。",
-    "writtenCantonese": "我將份禮物放喺枱面，等佢過嚟攞去公司送畀人。",
-    "cantoneseJyutping": "ngo5 zoeng1 fan6 lai5 mat6 fong3 hai2 toi2 min6, dang2 keoi5 gwo3 lai4 lo2 heoi3 gung1 si1 sung3 bei2 jan4。",
-    "viet": "Tôi đặt món quà trên bàn, đợi anh ấy đến lấy mang đến công ty tặng người ta.",
-    "english": "I put the gift on the table, waiting for him to take it to the office to give to someone.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我把禮物放在桌子上，等他來拿到公司送人。",
-    "simplifiedChinese": "我把礼物放在桌子上，等他来拿到公司送人。"
-  },
-  {
-    "pinyin": "tā yīnwèi shòushāng ér shēngbìngle, dùzi hěn bù shūfú。",
-    "hanviet": "tha nhân vị thọ thương nhi sinh bệnh liễu, đỗ tử ngận bất thư phục。",
-    "jyutping": "taa1 jan1 wai6 sau6 soeng1 ji4 saang1 beng6 liu5, tou5 zi2 han2 bat1 syu1 fuk6。",
-    "writtenCantonese": "佢因為受咗傷而生病，個肚好唔舒服。",
-    "cantoneseJyutping": "keoi5 jan1 wai6 sau6 zo2 soeng1 ji4 saang1 beng6, go3 tou5 hou2 m4 syu1 fuk6。",
-    "viet": "Anh ấy vì bị thương mà sinh bệnh, bụng rất khó chịu.",
-    "english": "He got sick because of an injury, and his stomach feels very uncomfortable.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "他因為受傷而生病了，肚子很不舒服。",
-    "simplifiedChinese": "他因为受伤而生病了，肚子很不舒服。"
-  },
-  {
-    "pinyin": "nǐ de shǒu hé jiǎo dōu hěn lèi ma? yào zhùyì jiànkāng。",
-    "hanviet": "nễ đích thủ hoạ cước đô ngận luỵ ma? yếu chú ý kiện khang。",
-    "jyutping": "nei5 dik1 sau2 wo4 goek3 dou1 han2 leoi6 maa1? jiu3 zyu3 ji3 gin6 hong1。",
-    "writtenCantonese": "你對手同埋對腳都好攰呀？要多啲注意健康。",
-    "cantoneseJyutping": "nei5 deoi3 sau2 tung4 maai4 deoi3 goek3 hou2 gui6 aa4? jiu3 do1 di1 zyu3 ji3 gin6 hong1。",
-    "viet": "Tay và chân của bạn đều rất mệt phải không? Cần chú ý sức khỏe.",
-    "english": "Are your hands and feet very tired? You should pay attention to your health.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "你的手和腳都很累嗎？要注意健康。",
-    "simplifiedChinese": "你的手和脚都很累吗？要注意健康。"
-  },
-  {
     "pinyin": "zhège wèntí hěn nán, bù róngyì xiě chū jùzi。",
     "hanviet": "giá cá vấn đề ngận nan, bất dung dị tả xuất câu tử。",
     "jyutping": "ze5 go3 man6 tai4 han2 naan4, bat1 jung4 ji6 se2 ceot1 geoi3 zi2。",
@@ -1051,19 +505,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "這個問題很難，不容易寫出句子。",
     "simplifiedChinese": "这个问题很难，不容易写出句子。"
-  },
-  {
-    "pinyin": "zhè jiàn yīfú hěn guì, dànshì kàn qǐlái hěn xīn.",
-    "hanviet": "giá kiện y phục ngận quý, đãn thị khán khởi lai ngận tân。",
-    "jyutping": "ze5 gin6 ji1 fuk6 han2 gwai3, daan6 si6 hon3 hei2 loi4 han2 san1。",
-    "writtenCantonese": "呢件衫好貴，但係睇落好新。",
-    "cantoneseJyutping": "ni1 gin6 saam1 hou2 gwai3, daan6 hai6 tai2 lok6 hou2 san1。",
-    "viet": "Bộ quần áo này rất đắt, nhưng trông rất mới.",
-    "english": "This piece of clothing is expensive, but it looks very new.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "這件衣服很貴，但是看起來很新。",
-    "simplifiedChinese": "这件衣服很贵，但是看起来很新。"
   },
   {
     "pinyin": "jīntiān tiānqì hěn lěng, bùshì yīgè chūqù wánr de hǎo rìzi。",
@@ -1079,19 +520,6 @@
     "simplifiedChinese": "今天天气很冷, 不是一个出去玩儿的好日子。"
   },
   {
-    "pinyin": "nǐ xiǎng hē kāfēi, chá, háishì hē bīng shuǐ?",
-    "hanviet": "nễ tưởng hét ca phê, trà, hoàn thị hét băng thuỷ?",
-    "jyutping": "nei5 soeng2 hot3 gaa3 fe1, caa4, waan4 si6 hot3 bing1 seoi2?",
-    "writtenCantonese": "你想飲咖啡、茶，定係飲冰水？",
-    "cantoneseJyutping": "nei5 soeng2 jam2 gaa3 fe1, caa4, ding6 hai6 jam2 bing1 seoi2?",
-    "viet": "Bạn muốn uống cà phê, trà, hay là uống nước đá?",
-    "english": "Would you like to drink coffee, tea, or ice water?",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "你想喝咖啡、茶，還是喝冰水？",
-    "simplifiedChinese": "你想喝咖啡、茶，还是喝冰水？"
-  },
-  {
     "pinyin": "wǒ yòng bēizi hēle liǎng píng niúnǎi, hái chīle yīxiē niúròu。",
     "hanviet": "ngã dụng bôi tử hét liễu lưỡng bình ngưu nãi, hoàn cật liễu nhất ta ngưu nhục。",
     "jyutping": "ngo5 jung6 bui1 zi2 hot3 liu5 loeng5 ping4 ngau4 naai5, waan4 hek3 liu5 jat1 se1 ngau4 juk6。",
@@ -1103,19 +531,6 @@
     "tocfl_level": "1",
     "traditionalChinese": "我用杯子喝了兩瓶牛奶，還吃了一些牛肉。",
     "simplifiedChinese": "我用杯子喝了两瓶牛奶，还吃了一些牛肉。"
-  },
-  {
-    "pinyin": "tā fēicháng duō cái, mǎile hěnduō jiàn yīfú sòng gěi jiārén。",
-    "hanviet": "tha phi thường đa tài, mãi liễu ngận đa kiện y phục tống cấp gia nhân。",
-    "jyutping": "taa1 fei1 soeng4 do1 coi4, maai5 liu5 han2 do1 gin6 ji1 fuk6 sung3 kap1 gaa1 jan4。",
-    "writtenCantonese": "佢好有錢，買咗好多件衫送畀屋企人。",
-    "cantoneseJyutping": "keoi5 hou2 jau5 cin2, maai5 zo2 hou2 do1 gin6 saam1 sung3 bei2 uk1 kei2 jan4。",
-    "viet": "Anh ấy rất nhiều tiền, đã mua rất nhiều bộ quần áo tặng cho người nhà.",
-    "english": "He has a lot of wealth and bought many pieces of clothing for his family.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "他非常多才，買了很多件衣服送給家人。",
-    "simplifiedChinese": "他非常多才，买了很多件衣服送给家人。"
   },
   {
     "pinyin": "wǒmen yīqi3 chīfàn ba, qǐng gěi wǒ nàge pánzi。",
@@ -1157,32 +572,6 @@
     "simplifiedChinese": "老师在办公室准备下课后的功课。"
   },
   {
-    "pinyin": "lǎobǎn gēn tóngshì dōu hěn nǐngjìng de zài gōngchuǎng gōngzuò.",
-    "hanviet": "lão bản cân đồng sự đô ngận an tĩnh địa tại công xưởng công tác.",
-    "jyutping": "lou5 baan2 gan1 tung4 si6 dou1 han2 ning4 zing6 dik1 zoi6 gung1 cong2 gung1 zok3。",
-    "writtenCantonese": "老闆同同事都好安靜咁喺工廠做嘢。",
-    "cantoneseJyutping": "lou5 baan2 tung4 tung4 si6 dou1 hou2 on1 zing6 gam2 hai2 gung1 cong2 zou6 je5。",
-    "viet": "Ông chủ và đồng nghiệp đều đang làm việc rất yên tĩnh ở công xưởng.",
-    "english": "The boss and colleagues are all working very quietly in the factory.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "老闆跟同事都很安靜地在工廠工作。",
-    "simplifiedChinese": "老板跟同事都很安静地在工厂工作。"
-  },
-  {
-    "pinyin": "yīshēng hé hùshì měitiān dōu yào shàngbān, fēicháng xīnku.",
-    "hanviet": "y sinh hoạ hộ sĩ mỗi thiên đô yếu thượng ban, phi thường tân khổ.",
-    "jyutping": "ji1 sang1 wo4 wu6 si6 mui5 tin1 dou1 jiu3 soeng5 baan1, fei1 soeng4 san1 fu2。",
-    "writtenCantonese": "醫生同房核每日都要返工，非常辛苦。",
-    "cantoneseJyutping": "ji1 sang1 tung4 fong4 hat6 mui5 jat1 dou1 jiu3 faan1 gung1, fei1 soeng4 san1 fu2。",
-    "viet": "Bác sĩ và y tá mỗi ngày đều phải đi làm, vô cùng vất vả.",
-    "english": "Doctors and nurses have to go to work every day; it is very hard work.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "醫生和護士每天都要上班，非常辛苦。",
-    "simplifiedChinese": "医生和护士每天都要上班，非常辛苦。"
-  },
-  {
     "pinyin": "shàngkè de shíhòu, xuéshēng bù kěyǐ yòng jìsuànjī.",
     "hanviet": "thượng khoá đích thời hậu, học sinh bất khả dĩ dụng kế toán cơ.",
     "jyutping": "soeng5 fo3 dik1 si4 hau6, hok6 saang1 bat1 ho2 ji5 jung6 gai3 syun3 gei1。",
@@ -1207,18 +596,5 @@
     "tocfl_level": "1",
     "traditionalChinese": "司機想請假，因為他的孩子生病了。",
     "simplifiedChinese": "司机想请假，因为他的孩子生病了。"
-  },
-  {
-    "pinyin": "wǒ de gōngkè hěnduō, suǒyǐ wǒ yào lian6xí xiě huáyǔ.",
-    "hanviet": "ngã đích công khoá ngận đa, sở dĩ ngã yếu luyện tập tả hoa ngữ.",
-    "jyutping": "ngo5 dik1 gung1 fo3 han2 do1, so2 ji5 ngo5 jiu3 lin6 zaap6 se2 waa4 jyu5。",
-    "writtenCantonese": "我好多功課，所以我需要練習寫華語。",
-    "cantoneseJyutping": "ngo5 hou2 do1 gung1 fo3, so2 ji5 ngo5 seoi1 jiu3 lin6 zaap6 se2 waa4 jyu5。",
-    "viet": "Bài tập của tôi rất nhiều, cho nên tôi cần luyện tập viết tiếng Hoa.",
-    "english": "I have a lot of homework, so I need to practice writing Chinese.",
-    "hsk_level": null,
-    "tocfl_level": "1",
-    "traditionalChinese": "我的功課很多，所以我要練習寫華語。",
-    "simplifiedChinese": "我的功课很多，所以我警练习写华语。"
   }
 ]
