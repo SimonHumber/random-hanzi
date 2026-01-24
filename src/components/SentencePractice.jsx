@@ -141,6 +141,8 @@ function SentencePractice() {
           item.simplifiedChinese?.toLowerCase().includes(term) ||
           item.pinyin?.toLowerCase().includes(term) ||
           item.jyutping?.toLowerCase().includes(term) ||
+          item.cantoneseJyutping?.toLowerCase().includes(term) ||
+          item.writtenCantonese?.toLowerCase().includes(term) ||
           item.english?.toLowerCase().includes(term) ||
           item.viet?.toLowerCase().includes(term) ||
           item.hanviet?.toLowerCase().includes(term)
@@ -290,7 +292,7 @@ function SentencePractice() {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search by character, pinyin, jyutping, english, vietnamese..."
+            placeholder="Search by character, pinyin, jyutping, cantonese, english, vietnamese..."
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
           />
         </div>
@@ -373,9 +375,21 @@ function SentenceCard({ item, index, enabled, onToggle }) {
           <span className="text-gray-600">{item.pinyin}</span>
         </div>
         <div className="break-words">
-          <span className="font-semibold text-gray-700">Jyutping:</span>{' '}
+          <span className="font-semibold text-gray-700">Standard Jyutping:</span>{' '}
           <span className="text-gray-600">{item.jyutping}</span>
         </div>
+        {item.writtenCantonese && (
+          <div className="break-words">
+            <span className="font-semibold text-gray-700">Written Cantonese:</span>{' '}
+            <span className="text-gray-600">{item.writtenCantonese}</span>
+          </div>
+        )}
+        {item.cantoneseJyutping && (
+          <div className="break-words">
+            <span className="font-semibold text-gray-700">Cantonese Jyutping:</span>{' '}
+            <span className="text-gray-600">{item.cantoneseJyutping}</span>
+          </div>
+        )}
         {item.hanviet && (
           <div className="break-words">
             <span className="font-semibold text-gray-700">Han Viet:</span>{' '}

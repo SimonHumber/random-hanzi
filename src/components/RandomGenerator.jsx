@@ -865,6 +865,8 @@ function HideableField({ label, value, show, onToggle, colorScheme = 'blue' }) {
 function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
   const [showPinyin, setShowPinyin] = useState(false)
   const [showJyutping, setShowJyutping] = useState(false)
+  const [showCantoneseJyutping, setShowCantoneseJyutping] = useState(false)
+  const [showWrittenCantonese, setShowWrittenCantonese] = useState(false)
   const [showVietnamese, setShowVietnamese] = useState(false)
   const [showHanViet, setShowHanViet] = useState(false)
   const [showEnglish, setShowEnglish] = useState(false)
@@ -1045,12 +1047,30 @@ function RandomItemCard({ item, onToggle, enabled, toggleKey }) {
             colorScheme="orange"
           />
           <HideableField
-            label="Jyutping"
+            label="Standard Jyutping"
             value={item.jyutping}
             show={showJyutping}
             onToggle={() => setShowJyutping(!showJyutping)}
             colorScheme="orange"
           />
+          {item.writtenCantonese && (
+            <HideableField
+              label="Written Cantonese"
+              value={item.writtenCantonese}
+              show={showWrittenCantonese}
+              onToggle={() => setShowWrittenCantonese(!showWrittenCantonese)}
+              colorScheme="orange"
+            />
+          )}
+          {item.cantoneseJyutping && (
+            <HideableField
+              label="Cantonese Jyutping"
+              value={item.cantoneseJyutping}
+              show={showCantoneseJyutping}
+              onToggle={() => setShowCantoneseJyutping(!showCantoneseJyutping)}
+              colorScheme="orange"
+            />
+          )}
           {item.hanviet && (
             <HideableField
               label="Han Viet"

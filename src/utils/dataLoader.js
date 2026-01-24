@@ -72,8 +72,8 @@ export const loadSentenceData = async () => {
   }
 
   try {
-    console.log('Starting to load sentences.json (16MB, 18k+ items)...')
-    const response = await fetch('/data/sentences.json')
+    console.log('Starting to load tocfl_level1_sentences.json...')
+    const response = await fetch('/data/tocfl_level1_sentences.json')
     console.log('Fetch complete, parsing JSON...')
     if (!response.ok) throw new Error('Failed to load sentences')
     const data = await response.json()
